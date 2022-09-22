@@ -13,10 +13,10 @@ public struct Invite: Codable, Identifiable {
     public var inviteCode: String
     public var uses: Int
     public var maxUses: Int?
-    public var expireAfter: String? // String Date
-    public var createdOn: String // String Date
+    public var expireAfter: Date? // String Date
+    public var createdOn: Date // String Date
     
-    public init(id: UUID, parentCommunityID: UUID, inviteCode: String, uses: Int, maxUses: Int? = nil, expireAfter: String? = nil, createdOn: String) {
+    public init(id: UUID, parentCommunityID: UUID, inviteCode: String, uses: Int, maxUses: Int? = nil, expireAfter: Date? = nil, createdOn: Date) {
         self.id = id
         self.parentCommunityID = parentCommunityID
         self.inviteCode = inviteCode

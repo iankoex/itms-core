@@ -10,10 +10,10 @@ import Foundation
 public struct Topic: Codable, Identifiable {
     public var id: UUID
     public var topicName: String
-    public var createdOn: String
-    public var lastModifiedOn: String
+    public var createdOn: Date
+    public var lastModifiedOn: Date
     
-    public init(id: UUID, topicName: String, createdOn: String, lastModifiedOn: String) {
+    public init(id: UUID, topicName: String, createdOn: Date, lastModifiedOn: Date) {
         self.id = id
         self.topicName = topicName
         self.createdOn = createdOn
@@ -39,9 +39,7 @@ extension Topic {
 
 extension Topic.TopicX {
     public func convertToTopic() -> Topic {
-        let crOn = DateUtils.getString(date: createdOn)
-        let lmOn = DateUtils.getString(date: lastModifiedOn)
-        return Topic(id: id, topicName: topicName, createdOn: crOn, lastModifiedOn: lmOn)
+        return Topic(id: id, topicName: topicName, createdOn: createdOn, lastModifiedOn: lastModifiedOn)
     }
 }
 

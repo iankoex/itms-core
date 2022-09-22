@@ -12,9 +12,9 @@ public struct Audit: Identifiable, Codable {
     public var mod: User
     public var communityID: UUID
     public var text: String
-    public var createdOn: String
+    public var createdOn: Date
     
-    public init(id: UUID, mod: User, communityID: UUID, text: String, createdOn: String) {
+    public init(id: UUID, mod: User, communityID: UUID, text: String, createdOn: Date) {
         self.id = id
         self.mod = mod
         self.communityID = communityID

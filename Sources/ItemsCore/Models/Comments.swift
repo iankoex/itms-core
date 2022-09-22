@@ -21,8 +21,9 @@ public struct Comment: Codable, Identifiable, Equatable {
     public var createdOn: Date
     public var lastModifiedOn: Date
     public var isFolded: Bool
+    public var hasReplies: Bool
     
-    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, createdOn: Date, lastModifiedOn: Date, isFolded: Bool) {
+    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, createdOn: Date, lastModifiedOn: Date, isFolded: Bool, hasReplies: Bool) {
         self.id = id
         self.text = text
         self.creator = creator
@@ -36,11 +37,12 @@ public struct Comment: Codable, Identifiable, Equatable {
         self.createdOn = createdOn
         self.lastModifiedOn = lastModifiedOn
         self.isFolded = isFolded
+        self.hasReplies = hasReplies
     }
 }
 
 extension Comment {
-    public struct POST: Codable {
+    public struct Create: Codable {
         public var text: String
         public var creatorID: UUID
         public var itemID: UUID
@@ -107,7 +109,8 @@ extension Comment.GET {
             level: level,
             createdOn: crOn,
             lastModifiedOn: lmOn,
-            isFolded: false
+            isFolded: false,
+            hasReplies: false
         )
     }
 }

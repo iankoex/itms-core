@@ -9,7 +9,7 @@ import Foundation
 
 public struct ChatMessage: Codable, Identifiable, Equatable, Hashable {
     public var id: UUID
-    public var creator: User.UserX
+    public var creator: User
     public var communityID: UUID // UUID of the community
     public var parentMessageID: UUID?
     public var type: MessageType
@@ -22,7 +22,7 @@ public struct ChatMessage: Codable, Identifiable, Equatable, Hashable {
     public var replies: [ChatMessage]
     public var draftText: String // the message being typed
     
-    public init(id: UUID, creator: User.UserX, communityID: UUID, parentMessageID: UUID? = nil, type: MessageType, text: String, sentTo: UUID? = nil, reportedItem: UUID? = nil, reportedComment: UUID? = nil, createdOn: Date, lastModifiedOn: Date, replies: [ChatMessage], draftText: String) {
+    public init(id: UUID, creator: User, communityID: UUID, parentMessageID: UUID? = nil, type: MessageType, text: String, sentTo: UUID? = nil, reportedItem: UUID? = nil, reportedComment: UUID? = nil, createdOn: Date, lastModifiedOn: Date, replies: [ChatMessage], draftText: String) {
         self.id = id
         self.creator = creator
         self.communityID = communityID

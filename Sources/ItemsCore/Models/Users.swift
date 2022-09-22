@@ -16,10 +16,10 @@ public struct User: Codable, Identifiable, Hashable {
     public var about: String
     public var itemsPoints: Int
     public var commentsPoints: Int
-    public var createdOn: String
-    public var lastModifiedOn: String
+    public var createdOn: Date
+    public var lastModifiedOn: Date
     
-    public init(id: UUID, username: String, displayName: String, displayPicture: String, backgroundPicture: String, about: String, itemsPoints: Int, commentsPoints: Int, createdOn: String, lastModifiedOn: String) {
+    public init(id: UUID, username: String, displayName: String, displayPicture: String, backgroundPicture: String, about: String, itemsPoints: Int, commentsPoints: Int, createdOn: Date, lastModifiedOn: Date) {
         self.id = id
         self.username = username
         self.displayName = displayName
@@ -64,9 +64,7 @@ extension User {
 
 extension User.UserX {
     public func convertToUser() -> User {
-        let crOn = DateUtils.getString(date: createdOn)
-        let lmOn = DateUtils.getString(date: lastModifiedOn)
-        return User(id: id, username: username, displayName: displayName, displayPicture: displayPicture, backgroundPicture: backgroundPicture, about: about, itemsPoints: itemsPoints, commentsPoints: commentsPoints, createdOn: crOn, lastModifiedOn: lmOn)
+        return User(id: id, username: username, displayName: displayName, displayPicture: displayPicture, backgroundPicture: backgroundPicture, about: about, itemsPoints: itemsPoints, commentsPoints: commentsPoints, createdOn: createdOn, lastModifiedOn: lastModifiedOn)
     }
 }
 
@@ -78,7 +76,7 @@ extension Collection where Element == User.UserX {
 
 // used to create the user during sign up
 extension User {
-    public struct POST: Codable {
+    public struct Create: Codable {
         public var username: String
         public var password: String
         public var confirmPassword: String
@@ -110,8 +108,8 @@ extension User {
             about: "I am Just a Placeholder :(",
             itemsPoints: 0,
             commentsPoints: 0,
-            createdOn: "",
-            lastModifiedOn: ""
+            createdOn: Date(),
+            lastModifiedOn: Date()
         )
     }
 }

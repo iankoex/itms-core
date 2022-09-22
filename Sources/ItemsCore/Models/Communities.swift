@@ -18,8 +18,8 @@ public struct Community: Codable, Identifiable {
     public var membersCount: Int
     public var flairs: [String]
     public var rules: [String]
-    public var createdOn: String
-    public var lastModifiedOn: String
+    public var createdOn: Date
+    public var lastModifiedOn: Date
     public var mods: [User]
     public var topics: [Topic]
     public var isPrivate: Bool
@@ -30,7 +30,7 @@ public struct Community: Codable, Identifiable {
     public var pointsAbove: Int
     public var themeColor: ColorComponents
     
-    public init(id: UUID, communityName: String, displayPicture: String, backgroundPicture: String, description: String, membersCount: Int, flairs: [String], rules: [String], createdOn: String, lastModifiedOn: String, mods: [User], topics: [Topic], isPrivate: Bool, allowsCrossPosts: Bool, allowsCrossPostsOnly: Bool, allowsFilms: Bool, allowsStoa: Bool, pointsAbove: Int, themeColor: ColorComponents) {
+    public init(id: UUID, communityName: String, displayPicture: String, backgroundPicture: String, description: String, membersCount: Int, flairs: [String], rules: [String], createdOn: Date, lastModifiedOn: Date, mods: [User], topics: [Topic], isPrivate: Bool, allowsCrossPosts: Bool, allowsCrossPostsOnly: Bool, allowsFilms: Bool, allowsStoa: Bool, pointsAbove: Int, themeColor: ColorComponents) {
         self.id = id
         self.communityName = communityName
         self.displayPicture = displayPicture
@@ -94,7 +94,7 @@ extension Community: Hashable {
 }
 
 extension Community {
-    public struct POST: Codable {
+    public struct Create: Codable {
         public var communityName: String
         public var displayPicture: String
         public var backgroundPicture: String
@@ -209,8 +209,8 @@ extension Community.CommunityX {
             membersCount: membersCount,
             flairs: flairs,
             rules: rules,
-            createdOn: crOn,
-            lastModifiedOn: lmOn,
+            createdOn: createdOn,
+            lastModifiedOn: createdOn,
             mods: actualMods,
             topics: actualTopics,
             isPrivate: isPrivate,
@@ -234,8 +234,8 @@ extension Community {
         membersCount: 0,
         flairs: [],
         rules: [],
-        createdOn: "",
-        lastModifiedOn: "",
+        createdOn: Date(),
+        lastModifiedOn: Date(),
         mods: [],
         topics: [],
         isPrivate: false,

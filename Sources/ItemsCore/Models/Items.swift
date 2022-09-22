@@ -18,14 +18,14 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
     public var filmURL: String?
     public var flair: String
     public var crossPostParentItemID: UUID?
-    public var createdOn: String
-    public var lastModifiedOn: String
+    public var createdOn: Date
+    public var lastModifiedOn: Date
     public var allowsComments: Bool
     public var allowsReplies: Bool
     public var commentsCount: Int
     public var stoa: Stoa.ForItem?
     
-    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, createdOn: String, lastModifiedOn: String, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, stoa: Stoa.ForItem? = nil) {
+    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, createdOn: Date, lastModifiedOn: Date, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, stoa: Stoa.ForItem? = nil) {
         self.id = id
         self.itemURL = itemURL
         self.creator = creator

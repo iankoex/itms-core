@@ -11,13 +11,13 @@ public struct Stoa: Identifiable, Codable, Equatable, Hashable {
     public var id: UUID
     public var name: String
     public var description: String // from its items description
-    public var startTime: String
+    public var startTime: Date
     public var creator: User
     public var community: Community
     public var itemID: UUID
     public var thumbnailURL: String // From the item thumnail url
     
-    public init(id: UUID, name: String, description: String, startTime: String, creator: User, community: Community, itemID: UUID, thumbnailURL: String) {
+    public init(id: UUID, name: String, description: String, startTime: Date, creator: User, community: Community, itemID: UUID, thumbnailURL: String) {
         self.id = id
         self.name = name
         self.description = description
@@ -35,7 +35,7 @@ extension Stoa {
             id: UUID(),
             name: "placeholder",
             description: "TY",
-            startTime: "2022-08-20T06:08:55Z",
+            startTime: Date(),
             creator: User.UserX.placeholder.convertToUser(),
             community: Community.placeholder,
             itemID: UUID(),
