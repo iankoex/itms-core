@@ -28,7 +28,7 @@ public struct Invite: Codable, Identifiable {
 }
 
 extension Invite {
-    public struct POST: Codable {
+    public struct Create: Codable {
         public var maxUses: Int?
         public var expireAfter: Int? // in seconds
         

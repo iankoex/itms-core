@@ -45,36 +45,6 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
     }
 }
 
-// public struct CrossPostItem: Codable {
-//    public var id: UUID?
-//    public var itemUrl: String
-//    public var creator: CrossPostCreator
-//    public var community: CrossPostCommunity
-//    public var description: String
-//    public var upvotes: Int
-//    public var downvotes: Int
-//    public var filmUrl: String?
-//    public var flair: String
-//    public var crossPostParentItem: CrossPostID?
-//    public var createdOn: String
-//    public var lastModifiedOn: String
-//    public var allowsComments: Bool
-//    public var allowsReplies: Bool
-//    public var commentsCount: Int
-// }
-//
-// public struct CrossPostID: Codable {
-//    public var id: UUID
-// }
-//
-// public struct CrossPostCreator: Codable {
-//    public var id: UUID
-// }
-//
-// public struct CrossPostCommunity: Codable {
-//    public var id: UUID
-// }
-
 extension Item {
     public struct Create: Codable {
         public var itemURL: String
@@ -98,5 +68,25 @@ extension Item {
             self.allowsReplies = allowsReplies
             self.stoa = stoa
         }
+    }
+}
+
+extension Item {
+    public static var placeholder: Item {
+        Item(
+            id: UUID(),
+            itemURL: "https://archive.org/download/vd_20210515_202105/vd.mp4",
+            creator: .placeholder,
+            community: .placeholder,
+            description: "Desc",
+            upvotes: 0,
+            downvotes: 0,
+            flair: "none",
+            createdOn: Date(),
+            lastModifiedOn: Date(),
+            allowsComments: true,
+            allowsReplies: true,
+            commentsCount: 0
+        )
     }
 }

@@ -65,36 +65,6 @@ extension ChatMessage {
     }
 }
 
-//extension ChatMessage {
-//    public struct X: Codable {
-//        public var id: UUID
-//        public var creator: User.UserX
-//        public var communityID: UUID // UUID of the community
-//        public var parentMessageID: UUID?
-//        public var type: MessageType
-//        public var text: String
-//        public var sentTo: UUID?
-//        public var reportedItem: UUID?
-//        public var reportedComment: UUID?
-//        public var createdOn: Date
-//        public var lastModifiedOn: Date
-//
-//        public init(id: UUID, creator: User.UserX, communityID: UUID, parentMessageID: UUID? = nil, type: MessageType, text: String, sentTo: UUID? = nil, reportedItem: UUID? = nil, reportedComment: UUID? = nil, createdOn: Date, lastModifiedOn: Date) {
-//            self.id = id
-//            self.creator = creator
-//            self.communityID = communityID
-//            self.parentMessageID = parentMessageID
-//            self.type = type
-//            self.text = text
-//            self.sentTo = sentTo
-//            self.reportedItem = reportedItem
-//            self.reportedComment = reportedComment
-//            self.createdOn = createdOn
-//            self.lastModifiedOn = lastModifiedOn
-//        }
-//    }
-//}
-
 extension ChatMessage {
     public enum MessageType: String, Codable {
         // used as notifications
@@ -112,26 +82,6 @@ extension ChatMessage {
     }
 }
 
-//extension ChatMessage.X {
-//    public func convertToChatMessage() -> ChatMessage {
-//        return ChatMessage(
-//            id: id,
-//            creator: creator,
-//            communityID: communityID,
-//            parentMessageID: parentMessageID,
-//            type: type,
-//            text: text,
-//            sentTo: sentTo,
-//            reportedItem: reportedItem,
-//            reportedComment: reportedComment,
-//            createdOn: createdOn,
-//            lastModifiedOn: lastModifiedOn,
-//            replies: [],
-//            draftText: ""
-//        )
-//    }
-//}
-
 extension ChatMessage {
     static public var placeholder: ChatMessage {
         ChatMessage(
@@ -147,9 +97,3 @@ extension ChatMessage {
         )
     }
 }
-
-//extension Collection where Element == ChatMessage.X {
-//    public func convertToChatMessage() -> [ChatMessage] {
-//        return map { $0.convertToChatMessage() }
-//    }
-//}
