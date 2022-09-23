@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUI
+//import SwiftUI
 
 public struct Community: Codable, Identifiable {
     public var id: UUID
@@ -265,25 +265,5 @@ public struct ColorComponents: Codable, Equatable, Hashable {
         self.g = g
         self.b = b
         self.o = o
-    }
-}
-
-extension ColorComponents {
-    public func color() -> Color {
-        Color(red: r, green: g, blue: b, opacity: o)
-    }
-}
-
-extension Color {
-    public func components() -> ColorComponents {
-        #if os(iOS)
-        let comp = UIColor(self).cgColor.components
-        #else
-        let comp = NSColor(self).cgColor.components
-        #endif
-        guard let comp = comp else {
-            return ColorComponents(r: 0.0, g: 0.4784314036369324, b: 0.9999999403953552, o: 1.0) // This is Color.accentColor
-        }
-        return  ColorComponents(r: comp[0], g: comp[1], b: comp[2], o: comp[3])
     }
 }
