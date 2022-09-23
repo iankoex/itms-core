@@ -1,6 +1,6 @@
 //
 //  ModAction.swift
-//  Items
+//  ItemsCore
 //
 //  Created by Ian on 28/01/2022.
 //

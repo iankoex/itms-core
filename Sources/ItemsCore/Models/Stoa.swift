@@ -1,6 +1,6 @@
 //
 //  Stoa.swift
-//  Items
+//  ItemsCore
 //
 //  Created by Ian on 09/08/2022.
 //

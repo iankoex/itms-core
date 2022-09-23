@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  Items
+//  ItemsCore
 //
 //  Created by Ian on 23/08/2022.
 //

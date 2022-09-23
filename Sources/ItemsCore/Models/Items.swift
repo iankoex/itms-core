@@ -1,6 +1,6 @@
 //
 //  Items.swift
-//  Items
+//  ItemsCore
 //
 //  Created by Ian on 16/06/2021.
 //

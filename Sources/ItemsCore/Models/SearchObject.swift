@@ -1,6 +1,6 @@
 //
 //  SearchObject.swift
-//  Items
+//  ItemsCore
 //
 //  Created by Ian on 03/03/2022.
 //

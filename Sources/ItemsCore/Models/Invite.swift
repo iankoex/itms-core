@@ -1,6 +1,6 @@
 //
 //  InviteCode.swift
-//  Items
+//  ItemsCore
 //
 //  Created by Ian on 08/02/2022.
 //
