@@ -36,7 +36,7 @@ extension Stoa {
             name: "placeholder",
             description: "TY",
             startTime: Date(),
-            creator: User.UserX.placeholder.convertToUser(),
+            creator: User.placeholder,
             community: Community.placeholder,
             itemID: UUID(),
             thumbnailURL: "https://ia800705.us.archive.org/12/items/chris-kenny_live_ASMR/ASMR.png"
@@ -46,11 +46,11 @@ extension Stoa {
 }
 
 extension Stoa {
-    public struct POST: Codable {
+    public struct Create: Codable {
         public let name: String
-        public let startTime: String
+        public let startTime: Date
         
-        public init(name: String, startTime: String) {
+        public init(name: String, startTime: Date) {
             self.name = name
             self.startTime = startTime
         }
@@ -61,6 +61,11 @@ extension Stoa {
     public struct Token: Codable {
         public let id: UUID
         public let value: String
+        
+        public init(id: UUID, value: String) {
+            self.id = id
+            self.value = value
+        }
     }
 }
 
@@ -69,12 +74,12 @@ extension Stoa {
         public var id: UUID
         public var name: String
         public var description: String
-        public var startTime: String
+        public var startTime: Date
         public var creatorID: UUID
         public var communityID: UUID
         public var itemID: UUID
         
-        public init(id: UUID, name: String, description: String, startTime: String, creatorID: UUID, communityID: UUID, itemID: UUID) {
+        public init(id: UUID, name: String, description: String, startTime: Date, creatorID: UUID, communityID: UUID, itemID: UUID) {
             self.id = id
             self.name = name
             self.description = description

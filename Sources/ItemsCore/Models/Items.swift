@@ -76,23 +76,23 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
 // }
 
 extension Item {
-    public struct POST: Codable {
+    public struct Create: Codable {
         public var itemURL: String
         public var communityID: UUID
         public var description: String
         public var flair: String
-        public var filmUrl: String?
+        public var filmURL: String?
         public var crossPostItemParentID: UUID?
         public var allowsComments: Bool
         public var allowsReplies: Bool
-        public var stoa: Stoa.POST?
+        public var stoa: Stoa.Create?
         
-        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmUrl: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, stoa: Stoa.POST? = nil) {
+        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, stoa: Stoa.Create? = nil) {
             self.itemURL = itemURL
             self.communityID = communityID
             self.description = description
             self.flair = flair
-            self.filmUrl = filmUrl
+            self.filmURL = filmURL
             self.crossPostItemParentID = crossPostItemParentID
             self.allowsComments = allowsComments
             self.allowsReplies = allowsReplies
