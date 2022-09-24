@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Topic: Codable, Identifiable {
+public struct Topic: Codable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var topicName: String
     public var createdOn: Date

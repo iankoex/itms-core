@@ -7,12 +7,14 @@
 
 import Foundation
 
-public struct Token: Codable {
+public struct LoginToken: Codable {
     public var id: UUID
-    public var user: TokenUser
+    public var userID: UUID
     public var value: String
-}
-
-public struct TokenUser: Codable {
-    public var id: UUID
+    
+    public init(id: UUID, userID: UUID, value: String) {
+        self.id = id
+        self.userID = userID
+        self.value = value
+    }
 }

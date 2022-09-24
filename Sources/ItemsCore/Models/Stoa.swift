@@ -31,7 +31,7 @@ public struct Stoa: Identifiable, Codable, Equatable, Hashable {
 
 extension Stoa {
     static public var placeholder: Stoa {
-        let stoa = Stoa(
+        Stoa(
             id: UUID(),
             name: "placeholder",
             description: "TY",
@@ -41,7 +41,6 @@ extension Stoa {
             itemID: UUID(),
             thumbnailURL: "https://ia800705.us.archive.org/12/items/chris-kenny_live_ASMR/ASMR.png"
         )
-        return stoa
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 //import SwiftUI
 
-public struct Community: Codable, Identifiable {
+public struct Community: Codable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var communityName: String
     public var displayPicture: String
@@ -50,46 +50,6 @@ public struct Community: Codable, Identifiable {
         self.allowsStoa = allowsStoa
         self.pointsAbove = pointsAbove
         self.themeColor = themeColor
-    }
-}
-
-extension Community: Equatable {
-    public static func == (lhs: Community, rhs: Community) -> Bool {
-        lhs.id == rhs.id &&
-        lhs.communityName == rhs.communityName &&
-        lhs.displayPicture == rhs.displayPicture &&
-        lhs.backgroundPicture == rhs.backgroundPicture &&
-        lhs.description == rhs.description &&
-        lhs.membersCount == rhs.membersCount &&
-        lhs.flairs == rhs.flairs &&
-        lhs.rules == rhs.rules &&
-        lhs.isPrivate == rhs.isPrivate &&
-        lhs.allowsCrossPosts == rhs.allowsCrossPosts &&
-        lhs.allowsCrossPostsOnly == rhs.allowsCrossPostsOnly &&
-        lhs.allowsFilms == rhs.allowsFilms &&
-        lhs.allowsStoa == rhs.allowsStoa &&
-        lhs.pointsAbove == rhs.pointsAbove &&
-        lhs.themeColor == rhs.themeColor
-    }
-}
-
-extension Community: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-        hasher.combine(communityName)
-        hasher.combine(displayPicture)
-        hasher.combine(backgroundPicture)
-        hasher.combine(description)
-        hasher.combine(membersCount)
-        hasher.combine(flairs)
-        hasher.combine(rules)
-        hasher.combine(isPrivate)
-        hasher.combine(allowsCrossPosts)
-        hasher.combine(allowsCrossPostsOnly)
-        hasher.combine(allowsFilms)
-        hasher.combine(allowsStoa)
-        hasher.combine(pointsAbove)
-        hasher.combine(themeColor)
     }
 }
 

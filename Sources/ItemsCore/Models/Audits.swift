@@ -22,7 +22,3 @@ public struct Audit: Identifiable, Codable {
         self.createdOn = createdOn
     }
 }
-
-public struct CommunityID: Codable {
-    public var id: UUID
-}
