@@ -7,13 +7,7 @@
 
 import Foundation
 
-public struct SearchObject: Codable ,Equatable {
-    public static func == (lhs: SearchObject, rhs: SearchObject) -> Bool {
-        lhs.items == rhs.items &&
-        lhs.comments == rhs.comments &&
-        lhs.communities == rhs.communities
-    }
-    
+public struct SearchObject: Codable, Equatable {
     public var items: [Item]
     public var comments: [Comment]
     public var communities: [Community]
@@ -37,4 +31,9 @@ extension SearchObject {
         case comments
         case communities
     }
+}
+
+public struct SearchRequest: Codable, Equatable {
+    public var text: String
+    public var page: Int
 }
