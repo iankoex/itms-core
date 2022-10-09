@@ -72,16 +72,14 @@ extension Stoa {
     public struct ForItem: Codable, Hashable {
         public var id: UUID
         public var name: String
-        public var description: String
         public var startTime: Date
         public var creatorID: UUID
         public var communityID: UUID
         public var itemID: UUID
         
-        public init(id: UUID, name: String, description: String, startTime: Date, creatorID: UUID, communityID: UUID, itemID: UUID) {
+        public init(id: UUID, name: String, startTime: Date, creatorID: UUID, communityID: UUID, itemID: UUID) {
             self.id = id
             self.name = name
-            self.description = description
             self.startTime = startTime
             self.creatorID = creatorID
             self.communityID = communityID
