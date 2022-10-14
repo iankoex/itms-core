@@ -27,5 +27,14 @@ extension ModAction {
         case removeComment
         case disableComments
         case disableReplies
+
+        public var rawValue: String {
+            switch self {
+            case .removeItem: return "Remove Item"
+            case .removeComment: return "Remove Comment"
+            case .disableComments: return "Disable Comments"
+            case .disableReplies: return "Disable Replies"
+            }
+        }
     }
 }
