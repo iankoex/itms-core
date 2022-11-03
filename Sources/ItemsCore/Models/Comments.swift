@@ -22,8 +22,9 @@ public struct Comment: Codable, Identifiable, Equatable {
     public var lastModifiedOn: Date
     public var isFolded: Bool
     public var hasReplies: Bool
+    public var repliesCount: Int
     
-    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, createdOn: Date, lastModifiedOn: Date, isFolded: Bool, hasReplies: Bool) {
+    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, createdOn: Date, lastModifiedOn: Date, isFolded: Bool, hasReplies: Bool, repliesCount: Int) {
         self.id = id
         self.text = text
         self.creator = creator
@@ -38,6 +39,7 @@ public struct Comment: Codable, Identifiable, Equatable {
         self.lastModifiedOn = lastModifiedOn
         self.isFolded = isFolded
         self.hasReplies = hasReplies
+        self.repliesCount = repliesCount
     }
 }
 
@@ -75,7 +77,8 @@ extension Comment {
             createdOn: Date(),
             lastModifiedOn: Date(),
             isFolded: true,
-            hasReplies: false
+            hasReplies: false,
+            repliesCount: 0
         )
     }
 }
