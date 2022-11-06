@@ -8,20 +8,16 @@
 import Foundation
 
 public struct SearchObject: Codable, Equatable {
-    public var items: [Item]
-    public var comments: [Comment]
-    public var communities: [Community]
-    public var tItems: Int
-    public var tComments: Int
-    public var tCommunities: Int
-    
-    public init(items: [Item], comments: [Comment], communities: [Community], tItems: Int, tComments: Int, tCommunities: Int) {
-        self.items = items
-        self.comments = comments
-        self.communities = communities
-        self.tItems = tItems
-        self.tComments = tComments
-        self.tCommunities = tCommunities
+    public var pagedItems: PagedItems
+    public var pagedComments: PagedComments
+    public var pagedCommunities: PagedCommunities
+    public var pagedStoas: PagedStoas
+
+    public init(pagedItems: PagedItems, pagedComments: PagedComments, pagedCommunities: PagedCommunities, pagedStoas: PagedStoas) {
+        self.pagedItems = pagedItems
+        self.pagedComments = pagedComments
+        self.pagedCommunities = pagedCommunities
+        self.pagedStoas = pagedStoas
     }
 }
 
@@ -30,6 +26,13 @@ extension SearchObject {
         case items
         case comments
         case communities
+        case stoas
+    }
+}
+
+public extension SearchObject {
+    static var initial: SearchObject {
+        SearchObject(pagedItems: .initial, pagedComments: .initial, pagedCommunities: .initial, pagedStoas: .initial)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PagedComments: Codable {
+public struct PagedComments: Codable, Equatable {
     public var comments: [Comment]
     public var totalComments: Int
     public var currentPage: Int
@@ -22,11 +22,22 @@ public struct PagedComments: Codable {
     }
 
     public mutating func append(contentsOf newPagedComment: PagedComments) {
-        self.comments.append(contentsOf: newPagedComment.comments)
+        guard newPagedComment.comments.isNotEmpty else {
+            return
+        }
+        if newPagedComment.currentPage == 1 {
+            self.comments = newPagedComment.comments
+        } else {
+            self.comments.append(contentsOf: newPagedComment.comments)
+        }
         self.totalComments = newPagedComment.totalComments
         self.currentPage = newPagedComment.currentPage
         self.totalPages = newPagedComment.totalPages
         self.nextPage = newPagedComment.currentPage + 1
+    }
+
+    public var canLoadMore: Bool {
+        totalComments > comments.count
     }
 }
 
