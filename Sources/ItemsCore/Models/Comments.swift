@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Comment: Codable, Identifiable, Equatable {
+public struct Comment: Codable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var text: String
     public var creator: User
