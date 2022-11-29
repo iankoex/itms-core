@@ -23,9 +23,10 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
     public var allowsComments: Bool
     public var allowsReplies: Bool
     public var commentsCount: Int
+    public var thumbnail: String
     public var stoa: Stoa.ForItem?
     
-    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, createdOn: Date, lastModifiedOn: Date, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, stoa: Stoa.ForItem? = nil) {
+    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, createdOn: Date, lastModifiedOn: Date, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, thumbnail: String, stoa: Stoa.ForItem? = nil) {
         self.id = id
         self.itemURL = itemURL
         self.creator = creator
@@ -41,6 +42,7 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
         self.allowsComments = allowsComments
         self.allowsReplies = allowsReplies
         self.commentsCount = commentsCount
+        self.thumbnail = thumbnail
         self.stoa = stoa
     }
 }
@@ -55,9 +57,10 @@ extension Item {
         public var crossPostItemParentID: UUID?
         public var allowsComments: Bool
         public var allowsReplies: Bool
+        public var thumbnail: String
         public var stoa: Stoa.Create?
         
-        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, stoa: Stoa.Create? = nil) {
+        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, thumbnail: String, stoa: Stoa.Create? = nil) {
             self.itemURL = itemURL
             self.communityID = communityID
             self.description = description
@@ -66,6 +69,7 @@ extension Item {
             self.crossPostItemParentID = crossPostItemParentID
             self.allowsComments = allowsComments
             self.allowsReplies = allowsReplies
+            self.thumbnail = thumbnail
             self.stoa = stoa
         }
     }
@@ -86,7 +90,8 @@ extension Item {
             lastModifiedOn: Date(),
             allowsComments: true,
             allowsReplies: true,
-            commentsCount: 0
+            commentsCount: 0,
+            thumbnail: ""
         )
     }
 }
