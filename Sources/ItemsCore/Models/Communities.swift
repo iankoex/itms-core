@@ -112,9 +112,9 @@ extension Community {
     static public var placeholder: Community = Community(
         id: UUID(),
         communityName: "placeholder",
-        displayPicture: "",
-        backgroundPicture: "",
-        description: "",
+        displayPicture: "https://user-images.githubusercontent.com/30172987/159361950-c2666b9b-562c-4311-ab3c-151fc5bc3d0d.jpg",
+        backgroundPicture: "https://user-images.githubusercontent.com/30172987/159362604-0342a7f1-8249-47da-9760-d547a3b7f212.jpg",
+        description: "placeholder Community",
         membersCount: 0,
         flairs: [],
         rules: [],
