@@ -10,22 +10,15 @@ import Foundation
 public struct Stoa: Identifiable, Codable, Equatable, Hashable {
     public var id: UUID
     public var name: String
-    public var description: String // from its items description
     public var startTime: Date
-    public var creator: User
-    public var community: Community
-    public var itemID: UUID
-    public var thumbnailURL: String // From the item thumnail url
+    // Item Contains the Creator the Community, Description and the Thumbnail
+    public var item: Item
     
-    public init(id: UUID, name: String, description: String, startTime: Date, creator: User, community: Community, itemID: UUID, thumbnailURL: String) {
+    public init(id: UUID, name: String, startTime: Date, item: Item) {
         self.id = id
         self.name = name
-        self.description = description
         self.startTime = startTime
-        self.creator = creator
-        self.community = community
-        self.itemID = itemID
-        self.thumbnailURL = thumbnailURL
+        self.item = item
     }
 }
 
@@ -34,12 +27,8 @@ extension Stoa {
         Stoa(
             id: UUID(),
             name: "placeholder",
-            description: "TY",
             startTime: Date(),
-            creator: User.placeholder,
-            community: Community.placeholder,
-            itemID: UUID(),
-            thumbnailURL: "https://ia800705.us.archive.org/12/items/chris-kenny_live_ASMR/ASMR.png"
+            item: .placeholder
         )
     }
 }
@@ -73,17 +62,11 @@ extension Stoa {
         public var id: UUID
         public var name: String
         public var startTime: Date
-        public var creatorID: UUID
-        public var communityID: UUID
-        public var itemID: UUID
         
-        public init(id: UUID, name: String, startTime: Date, creatorID: UUID, communityID: UUID, itemID: UUID) {
+        public init(id: UUID, name: String, startTime: Date) {
             self.id = id
             self.name = name
             self.startTime = startTime
-            self.creatorID = creatorID
-            self.communityID = communityID
-            self.itemID = itemID
         }
     }
 }
