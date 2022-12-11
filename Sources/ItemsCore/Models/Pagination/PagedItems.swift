@@ -25,10 +25,11 @@ public struct PagedItems: Codable, Equatable {
         guard newPagedItems.items.isNotEmpty else {
             return
         }
+        let newItems = newPagedItems.items.shuffled()
         if newPagedItems.currentPage == 1 {
-            self.items = newPagedItems.items
+            self.items = newItems
         } else {
-            self.items.append(contentsOf: newPagedItems.items)
+            self.items.append(contentsOf: newItems)
         }
         self.totalItems = newPagedItems.totalItems
         self.currentPage = newPagedItems.currentPage
