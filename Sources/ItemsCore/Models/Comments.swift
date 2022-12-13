@@ -18,13 +18,12 @@ public struct Comment: Codable, Identifiable, Equatable, Hashable {
     public var upvotes: Int
     public var downvotes: Int
     public var level: Int
-    public var createdOn: Date
-    public var lastModifiedOn: Date
     public var isFolded: Bool
     public var hasReplies: Bool
     public var repliesCount: Int
+    public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, createdOn: Date, lastModifiedOn: Date, isFolded: Bool, hasReplies: Bool, repliesCount: Int) {
+    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, isFolded: Bool, hasReplies: Bool, repliesCount: Int, timeStamp: TimeStampContainer) {
         self.id = id
         self.text = text
         self.creator = creator
@@ -35,11 +34,10 @@ public struct Comment: Codable, Identifiable, Equatable, Hashable {
         self.upvotes = upvotes
         self.downvotes = downvotes
         self.level = level
-        self.createdOn = createdOn
-        self.lastModifiedOn = lastModifiedOn
         self.isFolded = isFolded
         self.hasReplies = hasReplies
         self.repliesCount = repliesCount
+        self.timeStamp = timeStamp
     }
 }
 
@@ -74,11 +72,10 @@ extension Comment {
             upvotes: 0,
             downvotes: 0,
             level: 0,
-            createdOn: Date(),
-            lastModifiedOn: Date(),
             isFolded: true,
             hasReplies: false,
-            repliesCount: 0
+            repliesCount: 0,
+            timeStamp: .now
         )
     }
 }

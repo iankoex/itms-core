@@ -17,12 +17,11 @@ public struct ChatMessage: Codable, Identifiable, Equatable, Hashable {
     public var sentTo: UUID?
     public var reportedItem: UUID?
     public var reportedComment: UUID?
-    public var createdOn: Date
-    public var lastModifiedOn: Date
     public var replies: [ChatMessage]
     public var draftText: String // the message being typed
+    public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, creator: User, communityID: UUID, parentMessageID: UUID? = nil, type: MessageType, text: String, sentTo: UUID? = nil, reportedItem: UUID? = nil, reportedComment: UUID? = nil, createdOn: Date, lastModifiedOn: Date, replies: [ChatMessage], draftText: String) {
+    public init(id: UUID, creator: User, communityID: UUID, parentMessageID: UUID? = nil, type: MessageType, text: String, sentTo: UUID? = nil, reportedItem: UUID? = nil, reportedComment: UUID? = nil, replies: [ChatMessage], draftText: String, timeStamp: TimeStampContainer) {
         self.id = id
         self.creator = creator
         self.communityID = communityID
@@ -32,10 +31,9 @@ public struct ChatMessage: Codable, Identifiable, Equatable, Hashable {
         self.sentTo = sentTo
         self.reportedItem = reportedItem
         self.reportedComment = reportedComment
-        self.createdOn = createdOn
-        self.lastModifiedOn = lastModifiedOn
         self.replies = replies
         self.draftText = draftText
+        self.timeStamp = timeStamp
     }
 }
 
@@ -90,10 +88,9 @@ extension ChatMessage {
             communityID: UUID(),
             type: .normal,
             text: "I am just a Placeholder. I am doing it out of my own will. :(",
-            createdOn: Date(),
-            lastModifiedOn: Date(),
             replies: [],
-            draftText: ""
+            draftText: "",
+            timeStamp: .now
         )
     }
 }

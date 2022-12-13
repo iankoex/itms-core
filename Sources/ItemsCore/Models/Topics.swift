@@ -10,23 +10,25 @@ import Foundation
 public struct Topic: Codable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var topicName: String
-    public var createdOn: Date
-    public var lastModifiedOn: Date
+    public var displayPicture: PictureContainer
+    public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, topicName: String, createdOn: Date, lastModifiedOn: Date) {
+    public init(id: UUID, topicName: String, displayPicture: PictureContainer, timeStamp: TimeStampContainer) {
         self.id = id
         self.topicName = topicName
-        self.createdOn = createdOn
-        self.lastModifiedOn = lastModifiedOn
+        self.displayPicture = displayPicture
+        self.timeStamp = timeStamp
     }
 }
 
 extension Topic {
     public struct Create: Codable {
         public var name: String
+        public var displayPicture: PictureContainer
         
-        public init(name: String) {
+        public init(name: String, displayPicture: PictureContainer) {
             self.name = name
+            self.displayPicture = displayPicture
         }
     }
 }

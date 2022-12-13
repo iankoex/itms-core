@@ -18,15 +18,14 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
     public var filmURL: String?
     public var flair: String
     public var crossPostParentItemID: UUID?
-    public var createdOn: Date
-    public var lastModifiedOn: Date
     public var allowsComments: Bool
     public var allowsReplies: Bool
     public var commentsCount: Int
-    public var thumbnail: String
+    public var previewPicture: PictureContainer
     public var stoa: Stoa.ForItem?
+    public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, createdOn: Date, lastModifiedOn: Date, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, thumbnail: String, stoa: Stoa.ForItem? = nil) {
+    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, previewPicture: PictureContainer, stoa: Stoa.ForItem? = nil, timeStamp: TimeStampContainer) {
         self.id = id
         self.itemURL = itemURL
         self.creator = creator
@@ -37,13 +36,12 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
         self.filmURL = filmURL
         self.flair = flair
         self.crossPostParentItemID = crossPostParentItemID
-        self.createdOn = createdOn
-        self.lastModifiedOn = lastModifiedOn
         self.allowsComments = allowsComments
         self.allowsReplies = allowsReplies
         self.commentsCount = commentsCount
-        self.thumbnail = thumbnail
+        self.previewPicture = previewPicture
         self.stoa = stoa
+        self.timeStamp = timeStamp
     }
 }
 
@@ -57,10 +55,10 @@ extension Item {
         public var crossPostItemParentID: UUID?
         public var allowsComments: Bool
         public var allowsReplies: Bool
-        public var thumbnail: String
+        public var previewPicture: PictureContainer
         public var stoa: Stoa.Create?
         
-        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, thumbnail: String, stoa: Stoa.Create? = nil) {
+        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, previewPicture: PictureContainer, stoa: Stoa.Create? = nil) {
             self.itemURL = itemURL
             self.communityID = communityID
             self.description = description
@@ -69,7 +67,7 @@ extension Item {
             self.crossPostItemParentID = crossPostItemParentID
             self.allowsComments = allowsComments
             self.allowsReplies = allowsReplies
-            self.thumbnail = thumbnail
+            self.previewPicture = previewPicture
             self.stoa = stoa
         }
     }
@@ -86,12 +84,11 @@ extension Item {
             upvotes: 0,
             downvotes: 0,
             flair: "none",
-            createdOn: Date(),
-            lastModifiedOn: Date(),
             allowsComments: true,
             allowsReplies: true,
             commentsCount: 0,
-            thumbnail: ""
+            previewPicture: .placeholder,
+            timeStamp: .now
         )
     }
 }

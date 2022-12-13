@@ -21,11 +21,11 @@ public struct PagedItems: Codable, Equatable {
         self.totalPages = totalPages
     }
 
-    public mutating func append(contentsOf newPagedItems: PagedItems) {
+    public mutating func append(contentsOf newPagedItems: PagedItems, shouldShuffle: Bool = false) {
         guard newPagedItems.items.isNotEmpty else {
             return
         }
-        let newItems = newPagedItems.items.shuffled()
+        let newItems = shouldShuffle ? newPagedItems.items.shuffled() : newPagedItems.items
         if newPagedItems.currentPage == 1 {
             self.items = newItems
         } else {

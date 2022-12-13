@@ -14,16 +14,16 @@ public struct Invite: Codable, Identifiable {
     public var uses: Int
     public var maxUses: Int?
     public var expireAfter: Date? // String Date
-    public var createdOn: Date // String Date
+    public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, parentCommunityID: UUID, inviteCode: String, uses: Int, maxUses: Int? = nil, expireAfter: Date? = nil, createdOn: Date) {
+    public init(id: UUID, parentCommunityID: UUID, inviteCode: String, uses: Int, maxUses: Int? = nil, expireAfter: Date? = nil, timeStamp: TimeStampContainer) {
         self.id = id
         self.parentCommunityID = parentCommunityID
         self.inviteCode = inviteCode
         self.uses = uses
         self.maxUses = maxUses
         self.expireAfter = expireAfter
-        self.createdOn = createdOn
+        self.timeStamp = timeStamp
     }
 }
 
