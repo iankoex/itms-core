@@ -80,7 +80,7 @@ extension Item {
             itemURL: "https://archive.org/download/vd_20210515_202105/vd.mp4",
             creator: .placeholder,
             community: .placeholder,
-            description: "Desc",
+            description: "Item Description",
             upvotes: 0,
             downvotes: 0,
             flair: "none",

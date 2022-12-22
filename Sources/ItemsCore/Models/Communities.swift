@@ -119,12 +119,12 @@ extension Community {
 extension Community {
     static public var placeholder: Community = Community(
         id: UUID(),
-        communityName: "placeholder",
+        communityName: "Placeholder",
         pictures: .placeholder,
-        description: "placeholder Community",
+        description: "This is a Placeholder Community",
         membersCount: 0,
-        flairs: [],
-        rules: [],
+        flairs: ["Flair 1"],
+        rules: ["Mod Mail Rule"],
         mods: [],
         topics: [],
         restrictions: .placeholder,
