@@ -14,6 +14,9 @@ import Foundation
  and should therefore not be abused as advertisement
 
  all are within the last 48 hrs
+
+ Stoa?
+ Film?
  */
 
 public struct Featured: Codable {
