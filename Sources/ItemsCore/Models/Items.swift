@@ -81,13 +81,16 @@ extension Item {
             creator: .placeholder,
             community: .placeholder,
             description: "Item Description",
-            upvotes: 0,
-            downvotes: 0,
+            upvotes: Int.random(in: 0...10000),
+            downvotes: Int.random(in: 0...10000),
+            filmURL: "https://archive.org/download/vd_20210515_202105/vd.mp4",
             flair: "none",
+            crossPostParentItemID: UUID(),
             allowsComments: true,
             allowsReplies: true,
-            commentsCount: 0,
+            commentsCount: Int.random(in: 0...10000),
             previewPicture: .placeholder,
+            stoa: .init(id: UUID(), name: "Join in to learn about", startTime: Date()),
             timeStamp: .now
         )
     }
