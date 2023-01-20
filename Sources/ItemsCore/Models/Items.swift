@@ -16,7 +16,7 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
     public var upvotes: Int
     public var downvotes: Int
     public var filmURL: String?
-    public var flair: String
+    public var flair: Flair
     public var crossPostParentItemID: UUID?
     public var allowsComments: Bool
     public var allowsReplies: Bool
@@ -25,7 +25,7 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
     public var stoa: Stoa.ForItem?
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: String, crossPostParentItemID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, previewPicture: PictureContainer, stoa: Stoa.ForItem? = nil, timeStamp: TimeStampContainer) {
+    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: Flair, crossPostParentItemID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, previewPicture: PictureContainer, stoa: Stoa.ForItem? = nil, timeStamp: TimeStampContainer) {
         self.id = id
         self.itemURL = itemURL
         self.creator = creator
@@ -50,7 +50,7 @@ extension Item {
         public var itemURL: String
         public var communityID: UUID
         public var description: String
-        public var flair: String
+        public var flair: Flair
         public var filmURL: String?
         public var crossPostItemParentID: UUID?
         public var allowsComments: Bool
@@ -58,7 +58,7 @@ extension Item {
         public var previewPicture: PictureContainer
         public var stoa: Stoa.Create?
         
-        public init(itemURL: String, communityID: UUID, description: String, flair: String, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, previewPicture: PictureContainer, stoa: Stoa.Create? = nil) {
+        public init(itemURL: String, communityID: UUID, description: String, flair: Flair, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, previewPicture: PictureContainer, stoa: Stoa.Create? = nil) {
             self.itemURL = itemURL
             self.communityID = communityID
             self.description = description
@@ -84,7 +84,7 @@ extension Item {
             upvotes: Int.random(in: 0...10000),
             downvotes: Int.random(in: 0...10000),
             filmURL: "https://archive.org/download/vd_20210515_202105/vd.mp4",
-            flair: "none",
+            flair: .placeholder,
             crossPostParentItemID: UUID(),
             allowsComments: true,
             allowsReplies: true,

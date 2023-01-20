@@ -13,7 +13,7 @@ public struct Community: Codable, Identifiable, Equatable, Hashable {
     public var pictures: Pictures
     public var description: String
     public var membersCount: Int
-    public var flairs: [String]
+    public var flairs: [Flair]
     public var rules: [String]
     public var mods: [User]
     public var topics: [Topic]
@@ -22,7 +22,7 @@ public struct Community: Codable, Identifiable, Equatable, Hashable {
     public var themeColor: ColorComponents
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [String], rules: [String], mods: [User], topics: [Topic], restrictions: Restrictions, isPrivate: Bool, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
+    public init(id: UUID, communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [Flair], rules: [String], mods: [User], topics: [Topic], restrictions: Restrictions, isPrivate: Bool, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
         self.id = id
         self.communityName = communityName
         self.pictures = pictures
@@ -76,14 +76,14 @@ extension Community {
         public var communityName: String
         public var pictures: Community.Pictures
         public var description: String
-        public var flairs: [String]
+        public var flairs: [Flair.Create]
         public var rules: [String]
         public var topicID: UUID
         public var restrictions: Community.Restrictions
         public var isPrivate: Bool
         public var themeColor: ColorComponents
         
-        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [String], rules: [String], topicID: UUID, restrictions: Community.Restrictions, isPrivate: Bool, themeColor: ColorComponents) {
+        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [Flair.Create], rules: [String], topicID: UUID, restrictions: Community.Restrictions, isPrivate: Bool, themeColor: ColorComponents) {
             self.communityName = communityName
             self.pictures = pictures
             self.description = description
@@ -123,7 +123,7 @@ extension Community {
         pictures: .placeholder,
         description: "This is a Placeholder Community",
         membersCount: 0,
-        flairs: ["Flair 1"],
+        flairs: [],
         rules: ["Mod Mail Rule"],
         mods: [],
         topics: [],
