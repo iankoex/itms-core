@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Flair: Codable, Identifiable, Equatable, Hashable {
+public struct Flair: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var flairName: String
     public var isRestricted: Bool
@@ -24,7 +24,7 @@ public struct Flair: Codable, Identifiable, Equatable, Hashable {
 }
 
 extension Flair {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var name: String
         public var displayPicture: PictureContainer
 

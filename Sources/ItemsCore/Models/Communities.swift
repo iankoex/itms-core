@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Community: Codable, Identifiable, Equatable, Hashable {
+public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var communityName: String
     public var pictures: Pictures
@@ -40,7 +40,7 @@ public struct Community: Codable, Identifiable, Equatable, Hashable {
 }
 
 extension Community {
-    public struct Pictures: Codable, Equatable, Hashable {
+    public struct Pictures: Codable, Sendable, Equatable, Hashable {
         public var displayPicture: PictureContainer
         public var backgroundPicture: PictureContainer
         public var transparentPicture: PictureContainer
@@ -54,7 +54,7 @@ extension Community {
 }
 
 extension Community {
-    public struct Restrictions: Codable, Equatable, Hashable {
+    public struct Restrictions: Codable, Sendable, Equatable, Hashable {
         public var allowsCrossPosts: Bool
         public var allowsCrossPostsOnly: Bool
         public var allowsFilms: Bool
@@ -72,7 +72,7 @@ extension Community {
 }
 
 extension Community {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var communityName: String
         public var pictures: Community.Pictures
         public var description: String
@@ -99,7 +99,7 @@ extension Community {
 
 extension Community {
     // For the Invite View
-    public struct Private: Codable {
+    public struct Private: Codable, Sendable {
         public var id: UUID
         public var communityName: String
         public var displayPicture: PictureContainer
@@ -152,7 +152,7 @@ extension Community.Restrictions {
     )
 }
 
-public struct ColorComponents: Codable, Equatable, Hashable {
+public struct ColorComponents: Codable, Sendable, Equatable, Hashable {
     public var r: CGFloat
     public var g: CGFloat
     public var b: CGFloat

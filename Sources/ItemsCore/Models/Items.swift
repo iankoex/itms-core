@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Item: Identifiable, Codable, Equatable, Hashable {
+public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var id: UUID
     public var itemURL: String
     public var creator: User
@@ -46,7 +46,7 @@ public struct Item: Identifiable, Codable, Equatable, Hashable {
 }
 
 extension Item {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var itemURL: String
         public var communityID: UUID
         public var description: String

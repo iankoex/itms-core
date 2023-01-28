@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Invite: Codable, Identifiable {
+public struct Invite: Codable, Sendable, Identifiable {
     public var id: UUID
     public var parentCommunityID: UUID
     public var inviteCode: String
@@ -28,7 +28,7 @@ public struct Invite: Codable, Identifiable {
 }
 
 extension Invite {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var maxUses: Int?
         public var expireAfter: Int? // in seconds
         

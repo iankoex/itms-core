@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ModAction: Codable {
+public struct ModAction: Codable, Sendable {
     public var type: ModAction.ModActionType
     public var itemID: UUID?
     public var commentID: UUID?
@@ -22,7 +22,7 @@ public struct ModAction: Codable {
 }
 
 extension ModAction {
-    public enum ModActionType: String, Codable {
+    public enum ModActionType: String, Codable, Sendable {
         case removeItem
         case removeComment
         case disableComments

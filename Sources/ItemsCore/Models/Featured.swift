@@ -19,7 +19,7 @@ import Foundation
  Film?
  */
 
-public struct Featured: Codable {
+public struct Featured: Codable, Sendable {
     /// a community with the highest amount of members gained
     public var topGrowingCommunity: Community?
 

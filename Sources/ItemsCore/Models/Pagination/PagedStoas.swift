@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PagedStoas: Codable, Equatable {
+public struct PagedStoas: Codable, Sendable, Equatable {
     public var stoas: [Stoa]
     public var totalStoas: Int
     public var currentPage: Int

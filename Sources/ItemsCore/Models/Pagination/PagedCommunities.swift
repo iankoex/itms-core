@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PagedCommunities: Codable, Equatable {
+public struct PagedCommunities: Codable, Sendable, Equatable {
     public var communities: [Community]
     public var totalCommunities: Int
     public var currentPage: Int

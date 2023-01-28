@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PagedItems: Codable, Equatable {
+public struct PagedItems: Codable, Sendable, Equatable {
     public var items: [Item]
     public var totalItems: Int
     public var currentPage: Int

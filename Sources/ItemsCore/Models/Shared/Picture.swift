@@ -19,7 +19,7 @@ import Foundation
  url/image/(medium/low/thumbnail) will return the respective
  */
 
-public struct PictureContainer: Codable, Equatable, Hashable  {
+public struct PictureContainer: Codable, Sendable, Equatable, Hashable  {
     public var blurHashString: String
     public var lowQualityURL: URL
     public var originalQualityURL: URL // High Quality

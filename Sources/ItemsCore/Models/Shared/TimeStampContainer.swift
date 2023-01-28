@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TimeStampContainer: Codable, Equatable, Hashable {
+public struct TimeStampContainer: Codable, Sendable, Equatable, Hashable {
     public var createdOn: Date
     public var lastModifiedOn: Date
 

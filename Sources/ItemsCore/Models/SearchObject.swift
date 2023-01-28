@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SearchObject: Codable, Equatable {
+public struct SearchObject: Codable, Sendable, Equatable {
     public var pagedItems: PagedItems
     public var pagedComments: PagedComments
     public var pagedCommunities: PagedCommunities
@@ -22,7 +22,7 @@ public struct SearchObject: Codable, Equatable {
 }
 
 extension SearchObject {
-    public enum Spec: String, CaseIterable {
+    public enum Spec: String, CaseIterable, Sendable {
         case items
         case comments
         case communities
@@ -36,7 +36,7 @@ public extension SearchObject {
     }
 }
 
-public struct SearchRequest: Codable, Equatable {
+public struct SearchRequest: Codable, Sendable, Equatable {
     public var text: String
     public var page: Int
 }

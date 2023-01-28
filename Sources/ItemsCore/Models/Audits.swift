@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Audit: Identifiable, Codable {
+public struct Audit: Identifiable, Codable, Sendable {
     public var id: UUID
     public var mod: User
     public var communityID: UUID

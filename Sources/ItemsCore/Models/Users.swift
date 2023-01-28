@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: Codable, Identifiable, Hashable, Equatable {
+public struct User: Codable, Sendable, Identifiable, Hashable, Equatable {
     public var id: UUID
     public var username: String
     public var displayName: String
@@ -30,7 +30,7 @@ public struct User: Codable, Identifiable, Hashable, Equatable {
 }
 
 extension User {
-    public struct Pictures: Codable, Equatable, Hashable {
+    public struct Pictures: Codable, Sendable, Equatable, Hashable {
         public var displayPicture: PictureContainer
         public var backgroundPicture: PictureContainer
 
@@ -50,7 +50,7 @@ extension User.Pictures {
 
 // used to create the user during sign up
 extension User {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var username: String
         public var password: String
         public var confirmPassword: String

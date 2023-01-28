@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PagedComments: Codable, Equatable {
+public struct PagedComments: Codable, Sendable, Equatable {
     public var comments: [Comment]
     public var totalComments: Int
     public var currentPage: Int

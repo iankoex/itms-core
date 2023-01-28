@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Stoa: Identifiable, Codable, Equatable, Hashable {
+public struct Stoa: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var id: UUID
     public var name: String
     public var startTime: Date
@@ -34,7 +34,7 @@ extension Stoa {
 }
 
 extension Stoa {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public let name: String
         public let startTime: Date
         
@@ -46,7 +46,7 @@ extension Stoa {
 }
 
 extension Stoa {
-    public struct Token: Codable {
+    public struct Token: Codable, Sendable {
         public let id: UUID
         public let value: String
         
@@ -58,7 +58,7 @@ extension Stoa {
 }
 
 extension Stoa {
-    public struct ForItem: Codable, Hashable {
+    public struct ForItem: Codable, Sendable, Hashable {
         public var id: UUID
         public var name: String
         public var startTime: Date

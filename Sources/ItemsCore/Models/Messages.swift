@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ChatMessage: Codable, Identifiable, Equatable, Hashable {
+public struct ChatMessage: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var creator: User
     public var communityID: UUID // UUID of the community
@@ -38,7 +38,7 @@ public struct ChatMessage: Codable, Identifiable, Equatable, Hashable {
 }
 
 extension ChatMessage {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var text: String
         public var communityID: UUID
         public var type: MessageType
@@ -64,7 +64,7 @@ extension ChatMessage {
 }
 
 extension ChatMessage {
-    public enum MessageType: String, Codable {
+    public enum MessageType: String, Codable, Sendable {
         // used as notifications
         case normal
         // used when reporting

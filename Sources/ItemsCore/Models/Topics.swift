@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Topic: Codable, Identifiable, Equatable, Hashable {
+public struct Topic: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var id: UUID
     public var topicName: String
     public var displayPicture: PictureContainer
@@ -22,7 +22,7 @@ public struct Topic: Codable, Identifiable, Equatable, Hashable {
 }
 
 extension Topic {
-    public struct Create: Codable {
+    public struct Create: Codable, Sendable {
         public var name: String
         public var displayPicture: PictureContainer
         

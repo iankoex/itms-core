@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LoginToken: Codable {
+public struct LoginToken: Codable, Sendable {
     public var id: UUID
     public var userID: UUID
     public var value: String
