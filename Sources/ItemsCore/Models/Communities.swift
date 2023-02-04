@@ -18,7 +18,7 @@ public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var mods: [User]
     public var topics: [Topic]
     public var restrictions: Restrictions
-    public var isPrivate: Bool
+    public var isPrivate: Bool //    public var type: CommunityType // Public Restricted Proivate
     public var themeColor: ColorComponents
     public var timeStamp: TimeStampContainer
     
@@ -68,6 +68,14 @@ extension Community {
             self.allowsStoa = allowsStoa
             self.pointsAbove = pointsAbove
         }
+    }
+}
+
+extension Community {
+    public enum CommunityType: String, Codable, CaseIterable {
+        case publicCommunity
+        case privateCommunity
+        case restrictedCommunity
     }
 }
 
