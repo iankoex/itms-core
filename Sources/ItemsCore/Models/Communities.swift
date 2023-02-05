@@ -86,18 +86,16 @@ extension Community {
         public var description: String
         public var flairs: [Flair.Create]
         public var rules: [String]
-        public var topicID: UUID
         public var restrictions: Community.Restrictions
         public var isPrivate: Bool
         public var themeColor: ColorComponents
         
-        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [Flair.Create], rules: [String], topicID: UUID, restrictions: Community.Restrictions, isPrivate: Bool, themeColor: ColorComponents) {
+        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [Flair.Create], rules: [String], restrictions: Community.Restrictions, isPrivate: Bool, themeColor: ColorComponents) {
             self.communityName = communityName
             self.pictures = pictures
             self.description = description
             self.flairs = flairs
             self.rules = rules
-            self.topicID = topicID
             self.restrictions = restrictions
             self.isPrivate = isPrivate
             self.themeColor = themeColor
