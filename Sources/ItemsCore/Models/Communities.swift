@@ -14,26 +14,26 @@ public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var description: String
     public var membersCount: Int
     public var flairs: [Flair]
-    public var rules: [String]
+    public var policies: [Policy]
     public var mods: [User]
     public var topics: [Topic]
     public var restrictions: Restrictions
-    public var isPrivate: Bool //    public var type: CommunityType // Public Restricted Proivate
+    public var type: CommunityType
     public var themeColor: ColorComponents
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [Flair], rules: [String], mods: [User], topics: [Topic], restrictions: Restrictions, isPrivate: Bool, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
+    public init(id: UUID, communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [Flair], policies: [Policy], mods: [User], topics: [Topic], restrictions: Restrictions, type: CommunityType, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
         self.id = id
         self.communityName = communityName
         self.pictures = pictures
         self.description = description
         self.membersCount = membersCount
         self.flairs = flairs
-        self.rules = rules
+        self.policies = policies
         self.mods = mods
         self.topics = topics
         self.restrictions = restrictions
-        self.isPrivate = isPrivate
+        self.type = type
         self.themeColor = themeColor
         self.timeStamp = timeStamp
     }
@@ -72,11 +72,25 @@ extension Community {
 }
 
 extension Community {
-    public enum CommunityType: String, Codable, CaseIterable {
+    public enum CommunityType: String, Codable, CaseIterable, Sendable, Hashable {
         case publicCommunity
         case privateCommunity
         case restrictedCommunity
     }
+}
+
+extension Community {
+    public struct Policy: Identifiable, Codable, Equatable, Sendable, Hashable {
+        public var id: UUID = UUID()
+        public var title: String
+        public var detail: String
+        
+        public init(title: String, detail: String) {
+            self.title = title
+            self.detail = detail
+        }
+    }
+
 }
 
 extension Community {
@@ -85,19 +99,19 @@ extension Community {
         public var pictures: Community.Pictures
         public var description: String
         public var flairs: [Flair.Create]
-        public var rules: [String]
+        public var policies: [Community.Policy]
         public var restrictions: Community.Restrictions
-        public var isPrivate: Bool
+        public var type: CommunityType
         public var themeColor: ColorComponents
         
-        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [Flair.Create], rules: [String], restrictions: Community.Restrictions, isPrivate: Bool, themeColor: ColorComponents) {
+        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [Flair.Create], policies: [Community.Policy], restrictions: Community.Restrictions, type: CommunityType, themeColor: ColorComponents) {
             self.communityName = communityName
             self.pictures = pictures
             self.description = description
             self.flairs = flairs
-            self.rules = rules
+            self.policies = policies
             self.restrictions = restrictions
-            self.isPrivate = isPrivate
+            self.type = type
             self.themeColor = themeColor
         }
     }
@@ -130,11 +144,11 @@ extension Community {
         description: "This is a Placeholder Community",
         membersCount: 0,
         flairs: [],
-        rules: ["Mod Mail Rule"],
+        policies: [],
         mods: [],
         topics: [],
         restrictions: .placeholder,
-        isPrivate: false,
+        type: .publicCommunity,
         themeColor: ColorComponents(r: 1, g: 0, b: 0, o: 1),
         timeStamp: .now
     )
@@ -169,16 +183,5 @@ public struct ColorComponents: Codable, Sendable, Equatable, Hashable {
         self.g = g
         self.b = b
         self.o = o
-    }
-}
-
-public struct Policy: Identifiable, Codable, Equatable {
-    public var id: UUID = UUID()
-    public var title: String
-    public var detail: String
-    
-    public init(title: String, detail: String) {
-        self.title = title
-        self.detail = detail
     }
 }

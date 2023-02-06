@@ -22,10 +22,11 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var allowsReplies: Bool
     public var commentsCount: Int
     public var previewPicture: PictureContainer
+    private var type: ItemType
     public var stoa: Stoa.ForItem?
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: Flair, crossPostParentItemID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, previewPicture: PictureContainer, stoa: Stoa.ForItem? = nil, timeStamp: TimeStampContainer) {
+    public init(id: UUID, itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, filmURL: String? = nil, flair: Flair, crossPostParentItemID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, type: ItemType, previewPicture: PictureContainer, stoa: Stoa.ForItem? = nil, timeStamp: TimeStampContainer) {
         self.id = id
         self.itemURL = itemURL
         self.creator = creator
@@ -39,6 +40,7 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
         self.allowsComments = allowsComments
         self.allowsReplies = allowsReplies
         self.commentsCount = commentsCount
+        self.type = type
         self.previewPicture = previewPicture
         self.stoa = stoa
         self.timeStamp = timeStamp
@@ -55,10 +57,11 @@ extension Item {
         public var crossPostItemParentID: UUID?
         public var allowsComments: Bool
         public var allowsReplies: Bool
+        public var type: Item.ItemType
         public var previewPicture: PictureContainer
         public var stoa: Stoa.Create?
         
-        public init(itemURL: String, communityID: UUID, description: String, flair: Flair, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, previewPicture: PictureContainer, stoa: Stoa.Create? = nil) {
+        public init(itemURL: String, communityID: UUID, description: String, flair: Flair, filmURL: String? = nil, crossPostItemParentID: UUID? = nil, allowsComments: Bool, allowsReplies: Bool, type: ItemType, previewPicture: PictureContainer, stoa: Stoa.Create? = nil) {
             self.itemURL = itemURL
             self.communityID = communityID
             self.description = description
@@ -67,9 +70,17 @@ extension Item {
             self.crossPostItemParentID = crossPostItemParentID
             self.allowsComments = allowsComments
             self.allowsReplies = allowsReplies
+            self.type = type
             self.previewPicture = previewPicture
             self.stoa = stoa
         }
+    }
+}
+
+extension Item {
+    public enum ItemType: String, Codable, Sendable {
+        case video
+        case audio
     }
 }
 
@@ -89,6 +100,7 @@ extension Item {
             allowsComments: true,
             allowsReplies: true,
             commentsCount: Int.random(in: 0...10000),
+            type: .video,
             previewPicture: .placeholder,
             stoa: .init(id: UUID(), name: "Join in to learn about", startTime: Date()),
             timeStamp: .now
