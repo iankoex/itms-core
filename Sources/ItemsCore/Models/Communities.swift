@@ -171,3 +171,14 @@ public struct ColorComponents: Codable, Sendable, Equatable, Hashable {
         self.o = o
     }
 }
+
+public struct Policy: Identifiable, Codable, Equatable {
+    public var id: UUID = UUID()
+    public var title: String
+    public var detail: String
+    
+    public init(title: String, detail: String) {
+        self.title = title
+        self.detail = detail
+    }
+}
