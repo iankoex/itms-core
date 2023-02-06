@@ -72,7 +72,7 @@ extension Community {
 }
 
 extension Community {
-    public enum CommunityType: String, Codable, CaseIterable, Sendable, Hashable {
+    public enum CommunityType: String, Codable, Sendable, Hashable {
         case publicCommunity
         case privateCommunity
         case restrictedCommunity
