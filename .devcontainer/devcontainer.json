@@ -1,18 +1,11 @@
 {
-	"name": "Swift 5.7",
-	"dockerFile": "Dockerfile",
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash",
-		"lldb.adapterType": "bundled",
-		"lldb.executable": "/usr/bin/lldb",
-		"sourcekit-lsp.serverPath": "/usr/bin/sourcekit-lsp",
-		"sde.languageServerMode": "sourcekit-lsp"
-	},
-	"extensions": [
-		"vknabel.vscode-swift-development-environment",
-		"vadimcn.vscode-lldb"
-	],
-	"postCreateCommand": "swiftc --version",
-	"remoteUser": "me"
+    "name": "Swift",
+    "image": "swift:latest",
+    "extensions": [
+        "sswg.swift-lang",
+    ],
+    "settings": {
+        "lldb.library": "/usr/lib/liblldb.so"
+    },
+    "postCreateCommand": "swiftc --version"
 }
