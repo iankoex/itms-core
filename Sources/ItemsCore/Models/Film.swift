@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Film: Codable, Sendable {
+public struct Film: Codable, Sendable , Hashable, Equatable {
     var title: String
     var url: String
     var seriesID: UUID?

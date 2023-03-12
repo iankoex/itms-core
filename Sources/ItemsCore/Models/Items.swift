@@ -94,7 +94,7 @@ extension Item {
             description: "Item Description",
             upvotes: Int.random(in: 0...10000),
             downvotes: Int.random(in: 0...10000),
-            film: Film.placeholder,
+            film: .placeholder,
             flair: .placeholder,
             crossPostParentItemID: UUID(),
             allowsComments: true,
