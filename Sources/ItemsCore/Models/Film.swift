@@ -8,9 +8,9 @@
 import Foundation
 
 public struct Film: Codable, Sendable , Hashable, Equatable {
-    var title: String
-    var url: String
-    var seriesID: UUID?
+    public var title: String
+    public var url: String
+    public var seriesID: UUID?
 
     public init(title: String, url: String, seriesID: UUID? = nil) {
         self.title = title
