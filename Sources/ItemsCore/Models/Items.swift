@@ -22,7 +22,7 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var allowsReplies: Bool
     public var commentsCount: Int
     public var previewPicture: PictureContainer
-    private var type: ItemType
+    public var type: ItemType
     public var stoa: Stoa.ForItem?
     public var timeStamp: TimeStampContainer
     
@@ -48,7 +48,7 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
 }
 
 extension Item {
-    public struct Create: Codable, Sendable {
+    public struct Create: Codable, Sendable, Equatable {
         public var itemURL: String
         public var communityID: UUID
         public var description: String
@@ -78,7 +78,7 @@ extension Item {
 }
 
 extension Item {
-    public enum ItemType: String, Codable, Sendable {
+    public enum ItemType: String, Codable, Sendable, Equatable {
         case video
         case audio
     }

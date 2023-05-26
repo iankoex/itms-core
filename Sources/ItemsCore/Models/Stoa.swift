@@ -34,7 +34,7 @@ extension Stoa {
 }
 
 extension Stoa {
-    public struct Create: Codable, Sendable {
+    public struct Create: Codable, Sendable, Equatable, Hashable {
         public let name: String
         public let startTime: Date
         
