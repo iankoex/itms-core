@@ -87,7 +87,7 @@ extension Item {
 extension Item {
     public static var placeholder: Item {
         Item(
-            id: UUID(),
+            id: UUID(uuidString: "7D8F901E-27D1-4872-B725-DB07738B9BDA")!,
             itemURL: "https://archive.org/download/vd_20210515_202105/vd.mp4",
             creator: .placeholder,
             community: .placeholder,
