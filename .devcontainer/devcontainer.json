@@ -1,0 +1,11 @@
+{
+    "name": "Swift",
+    "image": "swift:latest",
+    "extensions": [
+        "sswg.swift-lang",
+    ],
+    "settings": {
+        "lldb.library": "/usr/lib/liblldb.so"
+    },
+    "postCreateCommand": "swiftc --version"
+}
