@@ -62,7 +62,7 @@ extension Comment {
 extension Comment {
     public static var placeholder: Comment {
         Comment(
-            id: UUID(),
+            id: UUID(uuidString: "C5229903-1ECE-417F-A396-B0255A517AD3")!,
             text: "Placeholder",
             creator: .placeholder,
             parentItemID: UUID(),
