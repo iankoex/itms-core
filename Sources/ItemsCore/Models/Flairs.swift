@@ -37,6 +37,6 @@ extension Flair {
 
 extension Flair {
     public static var placeholder: Flair {
-        Flair(id: UUID(), flairName: "Placeholder", isRestricted: true, displayPicture: .placeholder, timeStamp: .now)
+        Flair(id: UUID(), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .placeholder, timeStamp: .now)
     }
 }
