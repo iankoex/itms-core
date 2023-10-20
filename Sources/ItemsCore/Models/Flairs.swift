@@ -39,4 +39,8 @@ extension Flair {
     public static var placeholder: Flair {
         Flair(id: UUID(), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .placeholder, timeStamp: .now)
     }
+    
+    public static var staticPlaceholder: Flair {
+        Flair(id: UUID(uuidString: "70DD384B-AFB5-449D-8C58-9743B24DB703") ?? UUID(), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .staticPlaceholder, timeStamp: .now)
+    }
 }
