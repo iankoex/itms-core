@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Invite: Codable, Sendable, Identifiable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var parentCommunityID: UUID
     public var inviteCode: String
     public var uses: Int
@@ -16,7 +16,7 @@ public struct Invite: Codable, Sendable, Identifiable {
     public var expireAfter: Date? // String Date
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, parentCommunityID: UUID, inviteCode: String, uses: Int, maxUses: Int? = nil, expireAfter: Date? = nil, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), parentCommunityID: UUID, inviteCode: String, uses: Int, maxUses: Int? = nil, expireAfter: Date? = nil, timeStamp: TimeStampContainer) {
         self.id = id
         self.parentCommunityID = parentCommunityID
         self.inviteCode = inviteCode

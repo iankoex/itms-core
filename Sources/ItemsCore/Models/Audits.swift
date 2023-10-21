@@ -8,13 +8,13 @@
 import Foundation
 
 public struct Audit: Identifiable, Codable, Equatable, Sendable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var mod: User
-    public var communityID: UUID
+    public var communityID: Identifier<Community>
     public var text: String
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, mod: User, communityID: UUID, text: String, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), mod: User, communityID: Identifier<Community>, text: String, timeStamp: TimeStampContainer) {
         self.id = id
         self.mod = mod
         self.communityID = communityID

@@ -8,13 +8,13 @@
 import Foundation
 
 public struct Stoa: Identifiable, Codable, Sendable, Equatable, Hashable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var name: String
     public var startTime: Date
     // Item Contains the Creator the Community, Description and the Thumbnail
     public var item: Item
     
-    public init(id: UUID, name: String, startTime: Date, item: Item) {
+    public init(id: Identifier<Self> = Identifier(), name: String, startTime: Date, item: Item) {
         self.id = id
         self.name = name
         self.startTime = startTime
@@ -25,7 +25,7 @@ public struct Stoa: Identifiable, Codable, Sendable, Equatable, Hashable {
 extension Stoa {
     static public var placeholder: Stoa {
         Stoa(
-            id: UUID(),
+            id: Identifier(),
             name: "placeholder",
             startTime: Date(),
             item: .placeholder
@@ -59,11 +59,11 @@ extension Stoa {
 
 extension Stoa {
     public struct ForItem: Codable, Sendable, Hashable {
-        public var id: UUID
+        public var id: Identifier<Stoa>
         public var name: String
         public var startTime: Date
         
-        public init(id: UUID, name: String, startTime: Date) {
+        public init(id: Identifier<Stoa> = Identifier(), name: String, startTime: Date) {
             self.id = id
             self.name = name
             self.startTime = startTime

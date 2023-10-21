@@ -8,20 +8,20 @@
 import Foundation
 
 public struct ChatMessage: Codable, Sendable, Identifiable, Equatable, Hashable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var creator: User
-    public var communityID: UUID // UUID of the community
-    public var parentMessageID: UUID?
+    public var communityID: Identifier<Community> // UUID of the community
+    public var parentMessageID: Identifier<Self>?
     public var type: MessageType
     public var text: String
-    public var sentTo: UUID?
-    public var reportedItem: UUID?
-    public var reportedComment: UUID?
+    public var sentTo: Identifier<User>?
+    public var reportedItem: Identifier<Item>?
+    public var reportedComment: Identifier<Comment>?
     public var replies: [ChatMessage]
     public var draftText: String // the message being typed
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, creator: User, communityID: UUID, parentMessageID: UUID? = nil, type: MessageType, text: String, sentTo: UUID? = nil, reportedItem: UUID? = nil, reportedComment: UUID? = nil, replies: [ChatMessage], draftText: String, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), creator: User, communityID: Identifier<Community>, parentMessageID: Identifier<Self>? = nil, type: MessageType, text: String, sentTo: Identifier<User>? = nil, reportedItem: Identifier<Item>? = nil, reportedComment: Identifier<Comment>? = nil, replies: [ChatMessage], draftText: String, timeStamp: TimeStampContainer) {
         self.id = id
         self.creator = creator
         self.communityID = communityID
@@ -40,16 +40,16 @@ public struct ChatMessage: Codable, Sendable, Identifiable, Equatable, Hashable 
 extension ChatMessage {
     public struct Create: Codable, Sendable {
         public var text: String
-        public var communityID: UUID
+        public var communityID: Identifier<Community>
         public var type: MessageType
-        public var parentMessageID: UUID?
+        public var parentMessageID: Identifier<ChatMessage>?
         public var afterDate: Date
-        public var sendTo: UUID?
-        public var itemID: UUID?
-        public var commentID: UUID?
+        public var sendTo: Identifier<User>?
+        public var itemID: Identifier<Item>?
+        public var commentID: Identifier<Comment>?
         public var page: Int
         
-        public init(text: String, communityID: UUID, type: MessageType, parentMessageID: UUID? = nil, afterDate: Date, sendTo: UUID? = nil, itemID: UUID? = nil, commentID: UUID? = nil, page: Int) {
+        public init(text: String, communityID: Identifier<Community>, type: MessageType, parentMessageID: Identifier<ChatMessage>? = nil, afterDate: Date, sendTo: Identifier<User>? = nil, itemID: Identifier<Item>? = nil, commentID: Identifier<Comment>? = nil, page: Int) {
             self.text = text
             self.communityID = communityID
             self.type = type
@@ -83,9 +83,9 @@ extension ChatMessage {
 extension ChatMessage {
     static public var placeholder: ChatMessage {
         ChatMessage(
-            id: UUID(uuidString: "555FAE8C-7692-4639-A2EF-274ECF05EBBE")!,
+            id: Identifier("555FAE8C-7692-4639-A2EF-274ECF05EBBE"),
             creator: User.placeholder,
-            communityID: UUID(),
+            communityID: Identifier(),
             type: .normal,
             text: "I am just a Placeholder. I am doing it out of my own will. :(",
             replies: [],

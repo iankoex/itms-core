@@ -40,4 +40,13 @@ public extension PictureContainer {
             originalQualityURL: url
         )
     }
+    
+    static var staticPlaceholder: PictureContainer {
+        let url = URL(string: "https://picsum.photos/id/321/200/300")!
+        return PictureContainer(
+            blurHashString: "LVN^Odxa?WNa-;WB£,WBs;baR*af",
+            lowQualityURL: url,
+            originalQualityURL: url
+        )
+    }
 }
