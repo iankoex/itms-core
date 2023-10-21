@@ -14,6 +14,10 @@ public struct Identifier<T>: Equatable, Hashable, Codable, Sendable {
         self.value = value
     }
     
+    public init(_ value: UUID?) {
+        self.value = value ?? UUID()
+    }
+    
     public init(_ uuidString: String) {
         self.value = UUID(uuidString: uuidString) ?? UUID()
     }

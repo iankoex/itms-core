@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ItemsCore {
+public struct ItemsCoreT {
     public private(set) var text = "Hello, World!"
 
     public init() {
