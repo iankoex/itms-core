@@ -8,11 +8,11 @@
 import Foundation
 
 public struct LoginToken: Codable, Sendable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var userID: UUID
     public var value: String
     
-    public init(id: UUID, userID: UUID, value: String) {
+    public init(id: Identifier<Self> = Identifier(), userID: UUID, value: String) {
         self.id = id
         self.userID = userID
         self.value = value

@@ -8,13 +8,13 @@
 import Foundation
 
 public struct Flair: Codable, Sendable, Identifiable, Equatable, Hashable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var flairName: String
     public var isRestricted: Bool
     public var displayPicture: PictureContainer
     public var timeStamp: TimeStampContainer
 
-    public init(id: UUID, flairName: String, isRestricted: Bool, displayPicture: PictureContainer, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), flairName: String, isRestricted: Bool, displayPicture: PictureContainer, timeStamp: TimeStampContainer) {
         self.id = id
         self.flairName = flairName
         self.isRestricted = isRestricted
@@ -37,10 +37,10 @@ extension Flair {
 
 extension Flair {
     public static var placeholder: Flair {
-        Flair(id: UUID(), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .placeholder, timeStamp: .now)
+        Flair(id: Identifier<Flair>(), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .placeholder, timeStamp: .now)
     }
     
     public static var staticPlaceholder: Flair {
-        Flair(id: UUID(uuidString: "70DD384B-AFB5-449D-8C58-9743B24DB703") ?? UUID(), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .staticPlaceholder, timeStamp: .now)
+        Flair(id: Identifier<Flair>("70DD384B-AFB5-449D-8C58-9743B24DB703"), flairName: "Fix Flair Join in to learn about Join in to learn about Join in to learn aboutr", isRestricted: true, displayPicture: .staticPlaceholder, timeStamp: .now)
     }
 }

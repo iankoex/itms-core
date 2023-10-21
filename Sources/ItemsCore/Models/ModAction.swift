@@ -9,11 +9,11 @@ import Foundation
 
 public struct ModAction: Codable, Sendable {
     public var type: ModAction.ModActionType
-    public var itemID: UUID?
-    public var commentID: UUID?
+    public var itemID: Identifier<Item>?
+    public var commentID: Identifier<Comment>?
     public var reason: String
     
-    public init(type: ModAction.ModActionType, itemID: UUID? = nil, commentID: UUID? = nil, reason: String) {
+    public init(type: ModAction.ModActionType, itemID: Identifier<Item>? = nil, commentID: Identifier<Comment>? = nil, reason: String) {
         self.type = type
         self.itemID = itemID
         self.commentID = commentID

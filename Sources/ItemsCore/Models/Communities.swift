@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var communityName: String
     public var pictures: Pictures
     public var description: String
@@ -22,7 +22,7 @@ public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var themeColor: ColorComponents
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [Flair], policies: [Policy], mods: [User], topics: [Topic], restrictions: Restrictions, type: CommunityType, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [Flair], policies: [Policy], mods: [User], topics: [Topic], restrictions: Restrictions, type: CommunityType, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
         self.id = id
         self.communityName = communityName
         self.pictures = pictures
@@ -81,7 +81,7 @@ extension Community {
 
 extension Community {
     public struct Policy: Identifiable, Codable, Equatable, Sendable, Hashable {
-        public var id: UUID = UUID()
+        public var id: Identifier<Self> = Identifier()
         public var title: String
         public var detail: String
         
@@ -120,13 +120,13 @@ extension Community {
 extension Community {
     // For the Invite View
     public struct Private: Codable, Sendable {
-        public var id: UUID
+        public var id: Identifier<Community>
         public var communityName: String
         public var displayPicture: PictureContainer
         public var description: String
         public var membersCount: Int
         
-        public init(id: UUID, communityName: String, displayPicture: PictureContainer, description: String, membersCount: Int) {
+        public init(id: Identifier<Community> = Identifier(), communityName: String, displayPicture: PictureContainer, description: String, membersCount: Int) {
             self.id = id
             self.communityName = communityName
             self.displayPicture = displayPicture
@@ -138,7 +138,7 @@ extension Community {
 
 extension Community {
     static public var placeholder: Community = Community(
-        id: UUID(),
+        id: Identifier(),
         communityName: "Placeholder",
         pictures: .placeholder,
         description: "This is a Placeholder Community",

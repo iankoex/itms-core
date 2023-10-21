@@ -8,7 +8,7 @@
 import Foundation
 
 public struct User: Codable, Sendable, Identifiable, Hashable, Equatable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var username: String
     public var displayName: String
     public var pictures: User.Pictures
@@ -17,7 +17,7 @@ public struct User: Codable, Sendable, Identifiable, Hashable, Equatable {
     public var commentsPoints: Int
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, username: String, displayName: String, pictures: User.Pictures, about: String, itemsPoints: Int, commentsPoints: Int, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), username: String, displayName: String, pictures: User.Pictures, about: String, itemsPoints: Int, commentsPoints: Int, timeStamp: TimeStampContainer) {
         self.id = id
         self.username = username
         self.displayName = displayName
@@ -72,7 +72,7 @@ extension User {
 extension User {
     static public var placeholder: User {
         User(
-            id: UUID(uuidString: "555FAE8C-7692-4639-A2EF-274ECF05EBBE")!,
+            id: Identifier("555FAE8C-7692-4639-A2EF-274ECF05EBBE"),
             username: "Placeholder",
             displayName: "Placeholder",
             pictures: .placeholder,

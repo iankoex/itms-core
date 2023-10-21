@@ -8,12 +8,12 @@
 import Foundation
 
 public struct Comment: Codable, Sendable, Identifiable, Equatable, Hashable {
-    public var id: UUID
+    public var id: Identifier<Self>
     public var text: String
     public var creator: User
-    public var parentItemID: UUID
-    public var parentCommentID: UUID?
-    public var communityID: UUID
+    public var parentItemID: Identifier<Item>
+    public var parentCommentID: Identifier<Comment>?
+    public var communityID: Identifier<Community>
     public var replies: [Comment]
     public var upvotes: Int
     public var downvotes: Int
@@ -23,7 +23,7 @@ public struct Comment: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var repliesCount: Int
     public var timeStamp: TimeStampContainer
     
-    public init(id: UUID, text: String, creator: User, parentItemID: UUID, parentCommentID: UUID? = nil, communityID: UUID, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, isFolded: Bool, hasReplies: Bool, repliesCount: Int, timeStamp: TimeStampContainer) {
+    public init(id: Identifier<Self> = Identifier(), text: String, creator: User, parentItemID: Identifier<Item>, parentCommentID: Identifier<Comment>? = nil, communityID: Identifier<Community>, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, isFolded: Bool, hasReplies: Bool, repliesCount: Int, timeStamp: TimeStampContainer) {
         self.id = id
         self.text = text
         self.creator = creator
@@ -44,12 +44,12 @@ public struct Comment: Codable, Sendable, Identifiable, Equatable, Hashable {
 extension Comment {
     public struct Create: Codable, Sendable {
         public var text: String
-        public var creatorID: UUID
-        public var itemID: UUID
-        public var commentID: UUID?
+        public var creatorID: Identifier<User>
+        public var itemID: Identifier<Item>
+        public var commentID: Identifier<Comment>?
         public var level: Int
         
-        public init(text: String, creatorID: UUID, itemID: UUID, commentID: UUID? = nil, level: Int) {
+        public init(text: String, creatorID: Identifier<User>, itemID: Identifier<Item>, commentID: Identifier<Comment>? = nil, level: Int) {
             self.text = text
             self.creatorID = creatorID
             self.itemID = itemID
@@ -62,12 +62,12 @@ extension Comment {
 extension Comment {
     public static var placeholder: Comment {
         Comment(
-            id: UUID(uuidString: "C5229903-1ECE-417F-A396-B0255A517AD3")!,
+            id: Identifier<Comment>("C5229903-1ECE-417F-A396-B0255A517AD3"),
             text: "Placeholder",
             creator: .placeholder,
-            parentItemID: UUID(),
-            parentCommentID: UUID(),
-            communityID: UUID(),
+            parentItemID: Identifier<Item>(),
+            parentCommentID: Identifier<Comment>(),
+            communityID: Identifier<Community>(),
             replies: [],
             upvotes: 0,
             downvotes: 0,
