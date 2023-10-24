@@ -33,8 +33,8 @@ public struct PictureContainer: Codable, Sendable, Equatable, Hashable  {
 
 public extension PictureContainer {
     static var placeholder: PictureContainer {
-//        let url = URL(string: "https://picsum.photos/id/\(Int.random(in: 0...999))/200/300")!
-        let url = URL(string: "https://picsum.photos/id/67/200/300")!
+        let url = URL(string: "https://picsum.photos/id/\(Int.random(in: 0...999))/200/300")!
+//        let url = URL(string: "https://picsum.photos/id/67/200/300")!
         return PictureContainer(
             blurHashString: "LVN^Odxa?WNa-;WB£,WBs;baR*af",
             lowQualityURL: url,
