@@ -154,6 +154,14 @@ extension Community {
     )
 }
 
+extension Community: Nameable {
+    public var name: String {
+        get {
+            communityName
+        }
+    }
+}
+
 extension Community.Pictures {
     static public var placeholder: Community.Pictures = .init(
         displayPicture: .placeholder,
