@@ -70,3 +70,5 @@ extension Stoa {
         }
     }
 }
+
+extension Stoa: Nameable { }
