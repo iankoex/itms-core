@@ -17,7 +17,16 @@ public struct User: Codable, Sendable, Identifiable, Hashable, Equatable {
     public var commentsPoints: Int
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), username: String, displayName: String, pictures: User.Pictures, about: String, itemsPoints: Int, commentsPoints: Int, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        username: String,
+        displayName: String,
+        pictures: User.Pictures,
+        about: String,
+        itemsPoints: Int,
+        commentsPoints: Int,
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
         self.username = username
         self.displayName = displayName
@@ -58,7 +67,14 @@ extension User {
         public var pictures: User.Pictures
         public var about: String
         
-        public init(username: String, password: String, confirmPassword: String, displayName: String, pictures: User.Pictures, about: String) {
+        public init(
+            username: String,
+            password: String,
+            confirmPassword: String,
+            displayName: String,
+            pictures: User.Pictures,
+            about: String
+        ) {
             self.username = username
             self.password = password
             self.confirmPassword = confirmPassword
