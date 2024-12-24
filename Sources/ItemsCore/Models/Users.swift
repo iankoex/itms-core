@@ -51,7 +51,7 @@ extension User {
 }
 
 extension User.Pictures {
-    static public var placeholder: User.Pictures = .init(
+    static public let placeholder: User.Pictures = .init(
         displayPicture: .placeholder,
         backgroundPicture: .placeholder
     )

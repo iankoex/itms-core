@@ -21,7 +21,7 @@ public struct Film: Codable, Sendable, Hashable, Equatable {
 
 extension Film {
     
-    public static var placeholder = Film(
+    public static let placeholder = Film(
         title: "Movie 1",
         url: "https://archive.org/download/vd_20210515_202105/vd.mp4"
     )

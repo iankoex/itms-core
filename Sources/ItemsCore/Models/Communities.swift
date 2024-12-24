@@ -137,7 +137,7 @@ extension Community {
 }
 
 extension Community {
-    static public var placeholder: Community = Community(
+    static public let placeholder: Community = Community(
         id: Identifier(),
         communityName: "Placeholder",
         pictures: .placeholder,
@@ -163,7 +163,7 @@ extension Community: Nameable {
 }
 
 extension Community.Pictures {
-    static public var placeholder: Community.Pictures = .init(
+    static public let placeholder: Community.Pictures = .init(
         displayPicture: .placeholder,
         backgroundPicture: .placeholder,
         transparentPicture: .placeholder
@@ -171,7 +171,7 @@ extension Community.Pictures {
 }
 
 extension Community.Restrictions {
-    static public var placeholder: Community.Restrictions = .init(
+    static public let placeholder: Community.Restrictions = .init(
         allowsCrossPosts: true,
         allowsCrossPostsOnly: false,
         allowsFilms: true,
