@@ -35,7 +35,13 @@ public struct Featured: Codable, Sendable {
     /// the item with the most comments and replies
     public var mostCommentedItem: Item?
 
-    public init(topGrowingCommunity: Community? = nil, newlyCreatedCommunty: Community? = nil, controversialItem: Item? = nil, mostVotedItem: Item? = nil, mostCommentedItem: Item? = nil) {
+    public init(
+        topGrowingCommunity: Community? = nil,
+        newlyCreatedCommunty: Community? = nil,
+        controversialItem: Item? = nil,
+        mostVotedItem: Item? = nil,
+        mostCommentedItem: Item? = nil
+    ) {
         self.topGrowingCommunity = topGrowingCommunity
         self.newlyCreatedCommunty = newlyCreatedCommunty
         self.controversialItem = controversialItem

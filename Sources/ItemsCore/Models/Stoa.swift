@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Stoa: Identifiable, Codable, Sendable, Equatable, Hashable {
+public struct Stoa: Identifiable, Codable, Sendable, Equatable, Hashable, Nameable {
     public var id: Identifier<Self>
     public var name: String
     public var startTime: Date
@@ -70,5 +70,3 @@ extension Stoa {
         }
     }
 }
-
-extension Stoa: Nameable { }

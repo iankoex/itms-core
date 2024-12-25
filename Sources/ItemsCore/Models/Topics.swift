@@ -9,14 +9,22 @@ import Foundation
 
 public struct Topic: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var id: Identifier<Self>
-    public var topicName: String
-    public var displayPicture: PictureContainer
+    public var name: String
+    public var imageString: String
+    public var imageColors: [ColorComponents]
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), topicName: String, displayPicture: PictureContainer, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        name: String,
+        imageString: String,
+        imageColors: [ColorComponents],
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
-        self.topicName = topicName
-        self.displayPicture = displayPicture
+        self.name = name
+        self.imageString = imageString
+        self.imageColors = imageColors
         self.timeStamp = timeStamp
     }
 }
@@ -24,11 +32,17 @@ public struct Topic: Codable, Sendable, Identifiable, Equatable, Hashable {
 extension Topic {
     public struct Create: Codable, Sendable {
         public var name: String
-        public var displayPicture: PictureContainer
+        public var imageString: String
+        public var imageColors: [ColorComponents]
         
-        public init(name: String, displayPicture: PictureContainer) {
+        public init(
+            name: String,
+            imageString: String,
+            imageColors: [ColorComponents]
+        ) {
             self.name = name
-            self.displayPicture = displayPicture
+            self.imageString = imageString
+            self.imageColors = imageColors
         }
     }
 }

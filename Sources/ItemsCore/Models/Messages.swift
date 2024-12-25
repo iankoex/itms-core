@@ -21,7 +21,20 @@ public struct ChatMessage: Codable, Sendable, Identifiable, Equatable, Hashable 
     public var draftText: String // the message being typed
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), creator: User, communityID: Identifier<Community>, parentMessageID: Identifier<Self>? = nil, type: MessageType, text: String, sentTo: Identifier<User>? = nil, reportedItem: Identifier<Item>? = nil, reportedComment: Identifier<Comment>? = nil, replies: [ChatMessage], draftText: String, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        creator: User,
+        communityID: Identifier<Community>,
+        parentMessageID: Identifier<Self>? = nil,
+        type: MessageType,
+        text: String,
+        sentTo: Identifier<User>? = nil,
+        reportedItem: Identifier<Item>? = nil,
+        reportedComment: Identifier<Comment>? = nil,
+        replies: [ChatMessage],
+        draftText: String,
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
         self.creator = creator
         self.communityID = communityID
@@ -49,7 +62,17 @@ extension ChatMessage {
         public var commentID: Identifier<Comment>?
         public var page: Int
         
-        public init(text: String, communityID: Identifier<Community>, type: MessageType, parentMessageID: Identifier<ChatMessage>? = nil, afterDate: Date, sendTo: Identifier<User>? = nil, itemID: Identifier<Item>? = nil, commentID: Identifier<Comment>? = nil, page: Int) {
+        public init(
+            text: String,
+            communityID: Identifier<Community>,
+            type: MessageType,
+            parentMessageID: Identifier<ChatMessage>? = nil,
+            afterDate: Date,
+            sendTo: Identifier<User>? = nil,
+            itemID: Identifier<Item>? = nil,
+            commentID: Identifier<Comment>? = nil,
+            page: Int
+        ) {
             self.text = text
             self.communityID = communityID
             self.type = type

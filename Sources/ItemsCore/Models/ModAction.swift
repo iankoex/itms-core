@@ -13,7 +13,12 @@ public struct ModAction: Codable, Sendable {
     public var commentID: Identifier<Comment>?
     public var reason: String
     
-    public init(type: ModAction.ModActionType, itemID: Identifier<Item>? = nil, commentID: Identifier<Comment>? = nil, reason: String) {
+    public init(
+        type: ModAction.ModActionType,
+        itemID: Identifier<Item>? = nil,
+        commentID: Identifier<Comment>? = nil,
+        reason: String
+    ) {
         self.type = type
         self.itemID = itemID
         self.commentID = commentID
@@ -30,10 +35,10 @@ extension ModAction {
 
         public var rawValue: String {
             switch self {
-            case .removeItem: return "Remove Item"
-            case .removeComment: return "Remove Comment"
-            case .disableComments: return "Disable Comments"
-            case .disableReplies: return "Disable Replies"
+                case .removeItem: return "Remove Item"
+                case .removeComment: return "Remove Comment"
+                case .disableComments: return "Disable Comments"
+                case .disableReplies: return "Disable Replies"
             }
         }
     }

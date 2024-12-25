@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
+public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable, Nameable {
     public var id: Identifier<Self>
-    public var communityName: String
+    public var name: String
     public var pictures: Pictures
     public var description: String
     public var membersCount: Int
@@ -22,9 +22,23 @@ public struct Community: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var themeColor: ColorComponents
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), communityName: String, pictures: Pictures, description: String, membersCount: Int, flairs: [Flair], policies: [Policy], mods: [User], topics: [Topic], restrictions: Restrictions, type: CommunityType, themeColor: ColorComponents, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        name: String,
+        pictures: Pictures,
+        description: String,
+        membersCount: Int,
+        flairs: [Flair],
+        policies: [Policy],
+        mods: [User],
+        topics: [Topic],
+        restrictions: Restrictions,
+        type: CommunityType,
+        themeColor: ColorComponents,
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
-        self.communityName = communityName
+        self.name = name
         self.pictures = pictures
         self.description = description
         self.membersCount = membersCount
@@ -45,7 +59,11 @@ extension Community {
         public var backgroundPicture: PictureContainer
         public var transparentPicture: PictureContainer
 
-        public init(displayPicture: PictureContainer, backgroundPicture: PictureContainer, transparentPicture: PictureContainer) {
+        public init(
+            displayPicture: PictureContainer,
+            backgroundPicture: PictureContainer,
+            transparentPicture: PictureContainer
+        ) {
             self.displayPicture = displayPicture
             self.backgroundPicture = backgroundPicture
             self.transparentPicture = transparentPicture
@@ -61,7 +79,13 @@ extension Community {
         public var allowsStoa: Bool
         public var pointsAbove: Int
 
-        public init(allowsCrossPosts: Bool, allowsCrossPostsOnly: Bool, allowsFilms: Bool, allowsStoa: Bool, pointsAbove: Int) {
+        public init(
+            allowsCrossPosts: Bool,
+            allowsCrossPostsOnly: Bool,
+            allowsFilms: Bool,
+            allowsStoa: Bool,
+            pointsAbove: Int
+        ) {
             self.allowsCrossPosts = allowsCrossPosts
             self.allowsCrossPostsOnly = allowsCrossPostsOnly
             self.allowsFilms = allowsFilms
@@ -95,7 +119,7 @@ extension Community {
 
 extension Community {
     public struct Create: Codable, Sendable {
-        public var communityName: String
+        public var name: String
         public var pictures: Community.Pictures
         public var description: String
         public var flairs: [Flair.Create]
@@ -104,8 +128,17 @@ extension Community {
         public var type: CommunityType
         public var themeColor: ColorComponents
         
-        public init(communityName: String, pictures: Community.Pictures, description: String, flairs: [Flair.Create], policies: [Community.Policy], restrictions: Community.Restrictions, type: CommunityType, themeColor: ColorComponents) {
-            self.communityName = communityName
+        public init(
+            name: String,
+            pictures: Community.Pictures,
+            description: String,
+            flairs: [Flair.Create],
+            policies: [Community.Policy],
+            restrictions: Community.Restrictions,
+            type: CommunityType,
+            themeColor: ColorComponents
+        ) {
+            self.name = name
             self.pictures = pictures
             self.description = description
             self.flairs = flairs
@@ -121,14 +154,20 @@ extension Community {
     // For the Invite View
     public struct Private: Codable, Sendable {
         public var id: Identifier<Community>
-        public var communityName: String
+        public var name: String
         public var displayPicture: PictureContainer
         public var description: String
         public var membersCount: Int
         
-        public init(id: Identifier<Community> = Identifier(), communityName: String, displayPicture: PictureContainer, description: String, membersCount: Int) {
+        public init(
+            id: Identifier<Community> = Identifier(),
+            name: String,
+            displayPicture: PictureContainer,
+            description: String,
+            membersCount: Int
+        ) {
             self.id = id
-            self.communityName = communityName
+            self.name = name
             self.displayPicture = displayPicture
             self.description = description
             self.membersCount = membersCount
@@ -139,7 +178,7 @@ extension Community {
 extension Community {
     static public let placeholder: Community = Community(
         id: Identifier(),
-        communityName: "Placeholder",
+        name: "Placeholder",
         pictures: .placeholder,
         description: "This is a Placeholder Community",
         membersCount: 0,
@@ -152,14 +191,6 @@ extension Community {
         themeColor: ColorComponents(r: 1, g: 0, b: 0, o: 1),
         timeStamp: .now
     )
-}
-
-extension Community: Nameable {
-    public var name: String {
-        get {
-            communityName
-        }
-    }
 }
 
 extension Community.Pictures {
@@ -178,18 +209,4 @@ extension Community.Restrictions {
         allowsStoa: true,
         pointsAbove: 0
     )
-}
-
-public struct ColorComponents: Codable, Sendable, Equatable, Hashable {
-    public var r: CGFloat
-    public var g: CGFloat
-    public var b: CGFloat
-    public var o: CGFloat
-    
-    public init(r: CGFloat, g: CGFloat, b: CGFloat, o: CGFloat) {
-        self.r = r
-        self.g = g
-        self.b = b
-        self.o = o
-    }
 }

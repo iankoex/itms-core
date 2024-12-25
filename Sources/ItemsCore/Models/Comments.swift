@@ -23,7 +23,22 @@ public struct Comment: Codable, Sendable, Identifiable, Equatable, Hashable {
     public var repliesCount: Int
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), text: String, creator: User, parentItemID: Identifier<Item>, parentCommentID: Identifier<Comment>? = nil, communityID: Identifier<Community>, replies: [Comment], upvotes: Int, downvotes: Int, level: Int, isFolded: Bool, hasReplies: Bool, repliesCount: Int, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        text: String,
+        creator: User,
+        parentItemID: Identifier<Item>,
+        parentCommentID: Identifier<Comment>? = nil,
+        communityID: Identifier<Community>,
+        replies: [Comment],
+        upvotes: Int,
+        downvotes: Int,
+        level: Int,
+        isFolded: Bool,
+        hasReplies: Bool,
+        repliesCount: Int,
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
         self.text = text
         self.creator = creator
@@ -49,7 +64,13 @@ extension Comment {
         public var commentID: Identifier<Comment>?
         public var level: Int
         
-        public init(text: String, creatorID: Identifier<User>, itemID: Identifier<Item>, commentID: Identifier<Comment>? = nil, level: Int) {
+        public init(
+            text: String,
+            creatorID: Identifier<User>,
+            itemID: Identifier<Item>,
+            commentID: Identifier<Comment>? = nil,
+            level: Int
+        ) {
             self.text = text
             self.creatorID = creatorID
             self.itemID = itemID

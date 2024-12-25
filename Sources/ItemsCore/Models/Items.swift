@@ -26,7 +26,25 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var stoa: Stoa.ForItem?
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), itemURL: String, creator: User, community: Community, description: String, upvotes: Int, downvotes: Int, film: Film? = nil, flair: Flair, crossPostParentItemID: Identifier<Item>? = nil, allowsComments: Bool, allowsReplies: Bool, commentsCount: Int, type: ItemType, previewPicture: PictureContainer, stoa: Stoa.ForItem? = nil, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        itemURL: String,
+        creator: User,
+        community: Community,
+        description: String,
+        upvotes: Int,
+        downvotes: Int,
+        film: Film? = nil,
+        flair: Flair,
+        crossPostParentItemID: Identifier<Item>? = nil,
+        allowsComments: Bool,
+        allowsReplies: Bool,
+        commentsCount: Int,
+        type: ItemType,
+        previewPicture: PictureContainer,
+        stoa: Stoa.ForItem? = nil,
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
         self.itemURL = itemURL
         self.creator = creator
@@ -61,7 +79,19 @@ extension Item {
         public var previewPicture: PictureContainer
         public var stoa: Stoa.Create?
         
-        public init(itemURL: String, communityID: Identifier<Community>, description: String, flair: Flair, film: Film? = nil, crossPostItemParentID: Identifier<Item>? = nil, allowsComments: Bool, allowsReplies: Bool, type: ItemType, previewPicture: PictureContainer, stoa: Stoa.Create? = nil) {
+        public init(
+            itemURL: String,
+            communityID: Identifier<Community>,
+            description: String,
+            flair: Flair,
+            film: Film? = nil,
+            crossPostItemParentID: Identifier<Item>? = nil,
+            allowsComments: Bool,
+            allowsReplies: Bool,
+            type: ItemType,
+            previewPicture: PictureContainer,
+            stoa: Stoa.Create? = nil
+        ) {
             self.itemURL = itemURL
             self.communityID = communityID
             self.description = description

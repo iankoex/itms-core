@@ -14,7 +14,13 @@ public struct Audit: Identifiable, Codable, Equatable, Sendable {
     public var text: String
     public var timeStamp: TimeStampContainer
     
-    public init(id: Identifier<Self> = Identifier(), mod: User, communityID: Identifier<Community>, text: String, timeStamp: TimeStampContainer) {
+    public init(
+        id: Identifier<Self> = Identifier(),
+        mod: User,
+        communityID: Identifier<Community>,
+        text: String,
+        timeStamp: TimeStampContainer
+    ) {
         self.id = id
         self.mod = mod
         self.communityID = communityID

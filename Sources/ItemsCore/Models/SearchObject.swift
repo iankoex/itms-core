@@ -13,7 +13,12 @@ public struct SearchObject: Codable, Sendable, Equatable {
     public var pagedCommunities: PagedCommunities
     public var pagedStoas: PagedStoas
 
-    public init(pagedItems: PagedItems, pagedComments: PagedComments, pagedCommunities: PagedCommunities, pagedStoas: PagedStoas) {
+    public init(
+        pagedItems: PagedItems,
+        pagedComments: PagedComments,
+        pagedCommunities: PagedCommunities,
+        pagedStoas: PagedStoas
+    ) {
         self.pagedItems = pagedItems
         self.pagedComments = pagedComments
         self.pagedCommunities = pagedCommunities

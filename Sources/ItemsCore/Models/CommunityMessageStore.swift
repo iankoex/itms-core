@@ -11,7 +11,6 @@ public struct CommunityMessageStore: Codable, Equatable, Sendable {
     public var id: Identifier<Community> // UUID of community
     public var chatMessages: [ChatMessage]
     public var selectedChatMessage: ChatMessage = .placeholder
-//  public   var isRead: Bool = false
     public var messageIndex: Int = 0
     public var filterCreteria: MessagesFilterCriteria = .none
     public var sortCriteria: MessageSortCriteria = .newest
