@@ -9,17 +9,17 @@ import Foundation
 
 public struct TimeStampContainer: Codable, Sendable, Equatable, Hashable {
     public var createdOn: Date
-    public var lastModifiedOn: Date
+    public var modifiedOn: Date
 
-    public init(createdOn: Date, lastModifiedOn: Date) {
+    public init(createdOn: Date, modifiedOn: Date) {
         self.createdOn = createdOn
-        self.lastModifiedOn = lastModifiedOn
+        self.modifiedOn = modifiedOn
     }
 }
 
 public extension TimeStampContainer {
     static var now: TimeStampContainer {
         let date = Date()
-        return TimeStampContainer(createdOn: date, lastModifiedOn: date)
+        return TimeStampContainer(createdOn: date, modifiedOn: date)
     }
 }
