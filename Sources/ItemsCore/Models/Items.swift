@@ -18,13 +18,11 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var film: Film?
     public var flair: Flair
     public var crossPostParentItemID: Identifier<Item>?
-    public var allowsComments: Bool
-    public var allowsReplies: Bool
+    public var restrictions: Item.Restrictions
     public var commentsCount: Int
     public var previewPicture: PictureContainer
     public var type: ItemType
     public var stoa: Stoa.ForItem?
-    public var contentRating: ContentRating = .sfw
     public var timeStamp: TimeStampContainer
     
     public init(
@@ -38,12 +36,10 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
         film: Film? = nil,
         flair: Flair,
         crossPostParentItemID: Identifier<Item>? = nil,
-        allowsComments: Bool,
-        allowsReplies: Bool,
+        restrictions: Item.Restrictions,
         commentsCount: Int,
         type: ItemType,
         previewPicture: PictureContainer,
-        contentRating: ContentRating,
         stoa: Stoa.ForItem? = nil,
         timeStamp: TimeStampContainer
     ) {
@@ -57,12 +53,10 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
         self.film = film
         self.flair = flair
         self.crossPostParentItemID = crossPostParentItemID
-        self.allowsComments = allowsComments
-        self.allowsReplies = allowsReplies
+        self.restrictions = restrictions
         self.commentsCount = commentsCount
         self.type = type
         self.previewPicture = previewPicture
-        self.contentRating = contentRating
         self.stoa = stoa
         self.timeStamp = timeStamp
     }
@@ -76,12 +70,10 @@ extension Item {
         public var flair: Flair
         public var film: Film?
         public var crossPostItemParentID: Identifier<Item>?
-        public var allowsComments: Bool
-        public var allowsReplies: Bool
+        public var restrictions: Item.Restrictions
         public var type: Item.ItemType
         public var previewPicture: PictureContainer
         public var stoa: Stoa.Create?
-        public var contentRating: ContentRating
         
         public init(
             itemURL: String,
@@ -90,11 +82,9 @@ extension Item {
             flair: Flair,
             film: Film? = nil,
             crossPostItemParentID: Identifier<Item>? = nil,
-            allowsComments: Bool,
-            allowsReplies: Bool,
+            restrictions: Item.Restrictions,
             type: ItemType,
             previewPicture: PictureContainer,
-            contentRating: ContentRating,
             stoa: Stoa.Create? = nil
         ) {
             self.itemURL = itemURL
@@ -103,11 +93,9 @@ extension Item {
             self.flair = flair
             self.film = film
             self.crossPostItemParentID = crossPostItemParentID
-            self.allowsComments = allowsComments
-            self.allowsReplies = allowsReplies
+            self.restrictions = restrictions
             self.type = type
             self.previewPicture = previewPicture
-            self.contentRating = contentRating
             self.stoa = stoa
         }
     }
@@ -117,6 +105,24 @@ extension Item {
     public enum ItemType: String, Codable, Sendable, Equatable {
         case video
         case audio
+    }
+}
+
+extension Item {
+    public struct Restrictions: Codable, Sendable, Equatable, Hashable {
+        public var allowsComments: Bool
+        public var allowsReplies: Bool
+        public var contentRating: ContentRating
+        
+        public init(
+            allowsComments: Bool,
+            allowsReplies: Bool,
+            contentRating: ContentRating
+        ) {
+            self.allowsComments = allowsComments
+            self.allowsReplies = allowsReplies
+            self.contentRating = contentRating
+        }
     }
 }
 
@@ -133,14 +139,22 @@ extension Item {
             film: .placeholder,
             flair: .placeholder,
             crossPostParentItemID: Identifier(),
-            allowsComments: true,
-            allowsReplies: true,
+            restrictions: .placeholder,
             commentsCount: Int.random(in: 0...10000),
             type: .video,
             previewPicture: .placeholder,
-            contentRating: .sfw,
             stoa: .init(id: Identifier(), name: "Join in to learn about", startTime: Date()),
             timeStamp: .now
+        )
+    }
+}
+
+extension Item.Restrictions {
+    public static var placeholder: Item.Restrictions {
+        Item.Restrictions(
+            allowsComments: true,
+            allowsReplies: true,
+            contentRating: .sfw
         )
     }
 }

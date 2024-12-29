@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ItemsCore",
+    name: "itms-core",
     platforms: [
         .iOS(.v14),
         .macOS(.v11),
