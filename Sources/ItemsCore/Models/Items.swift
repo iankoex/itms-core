@@ -24,6 +24,7 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
     public var previewPicture: PictureContainer
     public var type: ItemType
     public var stoa: Stoa.ForItem?
+    public var contentRating: ContentRating = .sfw
     public var timeStamp: TimeStampContainer
     
     public init(
@@ -42,6 +43,7 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
         commentsCount: Int,
         type: ItemType,
         previewPicture: PictureContainer,
+        contentRating: ContentRating,
         stoa: Stoa.ForItem? = nil,
         timeStamp: TimeStampContainer
     ) {
@@ -60,6 +62,7 @@ public struct Item: Identifiable, Codable, Sendable, Equatable, Hashable {
         self.commentsCount = commentsCount
         self.type = type
         self.previewPicture = previewPicture
+        self.contentRating = contentRating
         self.stoa = stoa
         self.timeStamp = timeStamp
     }
@@ -78,6 +81,7 @@ extension Item {
         public var type: Item.ItemType
         public var previewPicture: PictureContainer
         public var stoa: Stoa.Create?
+        public var contentRating: ContentRating
         
         public init(
             itemURL: String,
@@ -90,6 +94,7 @@ extension Item {
             allowsReplies: Bool,
             type: ItemType,
             previewPicture: PictureContainer,
+            contentRating: ContentRating,
             stoa: Stoa.Create? = nil
         ) {
             self.itemURL = itemURL
@@ -102,6 +107,7 @@ extension Item {
             self.allowsReplies = allowsReplies
             self.type = type
             self.previewPicture = previewPicture
+            self.contentRating = contentRating
             self.stoa = stoa
         }
     }
@@ -132,6 +138,7 @@ extension Item {
             commentsCount: Int.random(in: 0...10000),
             type: .video,
             previewPicture: .placeholder,
+            contentRating: .sfw,
             stoa: .init(id: Identifier(), name: "Join in to learn about", startTime: Date()),
             timeStamp: .now
         )

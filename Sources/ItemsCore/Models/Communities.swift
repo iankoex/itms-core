@@ -78,19 +78,22 @@ extension Community {
         public var allowsFilms: Bool
         public var allowsStoa: Bool
         public var pointsAbove: Int
+        public var contentRating: ContentRating
 
         public init(
             allowsCrossPosts: Bool,
             allowsCrossPostsOnly: Bool,
             allowsFilms: Bool,
             allowsStoa: Bool,
-            pointsAbove: Int
+            pointsAbove: Int,
+            contentRating: ContentRating
         ) {
             self.allowsCrossPosts = allowsCrossPosts
             self.allowsCrossPostsOnly = allowsCrossPostsOnly
             self.allowsFilms = allowsFilms
             self.allowsStoa = allowsStoa
             self.pointsAbove = pointsAbove
+            self.contentRating = contentRating
         }
     }
 }
@@ -207,6 +210,7 @@ extension Community.Restrictions {
         allowsCrossPostsOnly: false,
         allowsFilms: true,
         allowsStoa: true,
-        pointsAbove: 0
+        pointsAbove: 0,
+        contentRating: .sfw
     )
 }
