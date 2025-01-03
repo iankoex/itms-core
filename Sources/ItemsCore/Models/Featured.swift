@@ -8,14 +8,13 @@
 import Foundation
 
 /*
- Will be used for The Wall View
  The Content here should NEVER be NSFW
  It is available to anyone using the app
  and should therefore not be abused as advertisement
 
- all are within the last 48 hrs
+ all are within the last 30 days then when content is sufficient 7 days, 48 hrs then finally 24hrs
 
- Stoa?
+ Stoa? most anticipated stoa, get the stoa with the most notifications
  Film?
  */
 
