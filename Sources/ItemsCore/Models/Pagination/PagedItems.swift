@@ -31,7 +31,7 @@ public struct PagedItems: Codable, Sendable, Equatable {
         } else {
             self.items.append(contentsOf: newItems)
         }
-        self.items = self.items.uniqued()
+        self.items = Array(self.items.uniqued())
         self.totalItems = newPagedItems.totalItems
         self.currentPage = newPagedItems.currentPage
         self.totalPages = newPagedItems.totalPages
