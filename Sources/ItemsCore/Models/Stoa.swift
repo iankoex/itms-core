@@ -49,10 +49,16 @@ extension Stoa {
     public struct Token: Codable, Sendable {
         public let id: UUID
         public let value: String
+        public let expiration: Date
         
-        public init(id: UUID, value: String) {
+        public init(
+            id: UUID,
+            value: String,
+            expiration: Date
+        ) {
             self.id = id
             self.value = value
+            self.expiration = expiration
         }
     }
 }
