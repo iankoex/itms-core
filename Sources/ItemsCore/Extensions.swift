@@ -14,7 +14,7 @@ extension Array where Element: Hashable {
     }
 }
 
-public extension Array {
+public extension Collection {
     var isNotEmpty: Bool {
         return !self.isEmpty
     }
