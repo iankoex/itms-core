@@ -14,8 +14,32 @@ extension Array where Element: Hashable {
     }
 }
 
-public extension Collection {
-    var isNotEmpty: Bool {
+extension Collection {
+    public var isNotEmpty: Bool {
         return !self.isEmpty
+    }
+}
+
+extension Optional where Wrapped == String {
+    public func isEmptyOrWhitespace() -> Bool {
+        guard let string = self else {
+            return true
+        }
+
+        return string.isEmptyOrWhitespace()
+    }
+
+    public func isNotEmptyOrWhitespace() -> Bool {
+        return !self.isEmptyOrWhitespace()
+    }
+}
+
+extension String {
+    public func isEmptyOrWhitespace() -> Bool {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    public func isNotEmptyOrWhitespace() -> Bool {
+        return !self.isEmptyOrWhitespace()
     }
 }
